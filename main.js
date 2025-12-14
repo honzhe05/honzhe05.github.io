@@ -13,6 +13,15 @@ fetch("stores.json")
     
     document.getElementById("total").textContent = "Current total number of stores: " + TotalStores;
   });
+  
+  fetch("https://api.github.com/repos/honzhe05/honzhe05.github.io/commits?per_page=1")
+  .then(res => res.json())
+  .then(data => {
+    const date = new Date(data[0].commit.committer.date);
+    document.getElementById("update-time").textContent =
+      "Last update: " + date.toLocaleString();
+  });
+  
 
 function getSelectedCategory() {
   return document.querySelector('input[name="category"]:checked')?.value;
