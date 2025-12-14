@@ -1,0 +1,50 @@
+{
+  "drink": [
+    {
+      "name": "50嵐",
+      "map": "https://www.google.com/maps/place/412%E8%87%BA%E4%B8%AD%E5%B8%82%E5%A4%A7%E9%87%8C%E5%8D%80%E7%9B%8A%E6%B0%91%E8%B7%AF%E4%BA%8C%E6%AE%B5257%E8%99%9F50%E5%B5%90+%E5%A4%A7%E9%87%8C%E7%9B%8A%E6%B0%91%E5%BA%97%EF%BC%88%E9%BB%9E%E9%81%B8%E7%B6%B2%E7%AB%99%E9%80%A3%E7%B5%90%E5%8F%AF%E7%B7%9A%E4%B8%8A%E9%BB%9E%E9%A4%90%EF%BC%89/@24.110415,120.6837801,19z/data=!4m9!1m2!2m1!1zNTDltZA!3m5!1s0x34693d59be6cf31f:0xfc2ed2fbf58ff3f!8m2!3d24.1106341!4d120.6837367!16s%2Fg%2F11pd0s76nm?utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MTIwOF8wIJvbDyoASAJQAQ%3D%3D"
+    },
+    {
+      "name": "清心",
+      "map": "https://www.google.com/maps/place/412%E8%87%BA%E4%B8%AD%E5%B8%82%E5%A4%A7%E9%87%8C%E5%8D%80%E7%9B%8A%E6%B0%91%E8%B7%AF%E4%BA%8C%E6%AE%B5256%E8%99%9F%E6%B8%85%E5%BF%83%E7%A6%8F%E5%85%A8%E5%A4%A7%E9%87%8C%E7%9B%8A%E6%B0%91%E5%BA%97-%E7%8F%8D%E7%8F%A0%E5%A5%B6%E8%8C%B6%E6%89%8B%E6%90%96%E9%A3%B2%E6%96%99%E5%B0%88%E8%B3%A3%E5%BA%97/@24.1104055,120.6836091,17z/data=!4m9!1m2!2m1!1z5riF5b-D!3m5!1s0x34693d0ac68ea9b9:0xc13519a6349358e3!8m2!3d24.1106948!4d120.6840631!16s%2Fg%2F11h6qb0wc9?utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MTIwOF8wIJvbDyoASAJQAQ%3D%3D"
+    },
+    {
+      "name": "茶湯會",
+      "map": "https://www.google.com/maps/place/412%E8%87%BA%E4%B8%AD%E5%B8%82%E5%A4%A7%E9%87%8C%E5%8D%80%E7%9B%8A%E6%B0%91%E8%B7%AF%E4%BA%8C%E6%AE%B5253%E8%99%9F%E8%8C%B6%E6%B9%AF%E6%9C%83(%E5%A4%A7%E9%87%8C%E7%9B%8A%E6%B0%91%E5%BA%97)/@24.1104104,120.6838219,19z/data=!4m6!3m5!1s0x34693ce674b7034f:0x9aff6f5f1051fe7!8m2!3d24.1104951!4d120.6837492!16s%2Fg%2F11bbrm3q3l?utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MTIwOF8wIJvbDyoASAJQAQ%3D%3D"
+    },
+    {
+      "name": "台灣第一味",
+      "map": "https://www.google.com/maps/place/412%E8%87%BA%E4%B8%AD%E5%B8%82%E5%A4%A7%E9%87%8C%E5%8D%80%E7%9B%8A%E6%B0%91%E8%B7%AF%E4%BA%8C%E6%AE%B5254%E8%99%9FTEATOP%E7%AC%AC%E4%B8%80%E5%91%B3+%E5%A4%A7%E9%87%8C%E7%9B%8A%E6%B0%91%E5%BA%97/@24.1104104,120.6838219,19z/data=!4m6!3m5!1s0x34693df26961a71b:0x1f50a8e1628b1522!8m2!3d24.1106563!4d120.6840632!16s%2Fg%2F11hzwcbf9l?utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MTIwOF8wIJvbDyoASAJQAQ%3D%3D"
+    }
+  ],
+  "food": [
+    {
+      "name": "八方雲集 大里仁愛店",
+      "map": "https://www.google.com/maps/place/412臺中市大里區東榮路455號八方雲集+大里仁愛店1樓/@24.109599,120.6822208,17z/data=!4m9!1m2!2m1!1z5YWr5pa56Zuy6ZuG!3m5!1s0x34693d131b2b8633:0xd785027b388c3b2f!8m2!3d24.1095805!4d120.681409!16s%2Fg%2F11wg57sywt?utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MTIwOF8wIJvbDyoASAJQAQ%3D%3D"
+    },
+    {
+      "name": "粥大福",
+      "map": "https://www.google.com/maps/place/412%E8%87%BA%E4%B8%AD%E5%B8%82%E5%A4%A7%E9%87%8C%E5%8D%80%E7%9B%8A%E6%B0%91%E8%B7%AF%E4%BA%8C%E6%AE%B5228%E8%99%9F%E7%B2%A5%E5%A4%A7%E7%A6%8F-%E5%A4%A7%E9%87%8C%E7%9B%8A%E6%B0%91%E5%BA%971%E6%A8%93/@24.1094135,120.6839705,19z/data=!4m6!3m5!1s0x34693d0dee5193c9:0x2c302676ebef03c7!8m2!3d24.1094842!4d120.6840244!16s%2Fg%2F11y8tp_x2y?utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MTIwOF8wIJvbDyoASAJQAQ%3D%3D"
+    }
+  ],
+  "snack": [
+    {
+      "name": "統元豆花",
+      "map": "https://www.google.com/maps/place/412%E8%87%BA%E4%B8%AD%E5%B8%82%E5%A4%A7%E9%87%8C%E5%8D%80%E7%9B%8A%E6%B0%91%E8%B7%AF%E4%BA%8C%E6%AE%B5287%E8%99%9F%E7%B5%B1%E5%85%83%E8%B1%86%E8%8A%B1(%E5%A4%A7%E9%87%8C%E7%9B%8A%E6%B0%91%E5%BA%97)%E4%B8%80%E6%A8%93/@24.1115978,120.6837717,19z/data=!4m6!3m5!1s0x34693ce38a9f179d:0xbc895e2913099be4!8m2!3d24.111487!4d120.6836877!16s%2Fg%2F12hl__77t?utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MTIwOF8wIJvbDyoASAJQAQ%3D%3D"
+    },
+    {
+      "name": "榮耀豆花",
+      "map": "https://www.google.com/maps/place/412%E8%87%BA%E4%B8%AD%E5%B8%82%E5%A4%A7%E9%87%8C%E5%8D%80%E7%9B%8A%E6%B0%91%E8%B7%AF%E4%BA%8C%E6%AE%B5148%E8%99%9F%E6%A6%AE%E8%80%80%E8%B1%86%E8%8A%B1/@24.1078502,120.6843566,19z/data=!4m6!3m5!1s0x34693ce8b94d79af:0xce9273ce8f4a2d50!8m2!3d24.1078844!4d120.6843513!16s%2Fg%2F11bvvxz8n3?utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MTIwOF8wIJvbDyoASAJQAQ%3D%3D"
+    }
+  ],
+  "other": [
+    {
+      "name": "全家",
+      "map": "https://www.google.com/maps/place/412%E8%87%BA%E4%B8%AD%E5%B8%82%E5%A4%A7%E9%87%8C%E5%8D%80%E7%9B%8A%E6%B0%91%E8%B7%AF%E4%BA%8C%E6%AE%B5173%E8%99%9F%E5%85%A8%E5%AE%B6%E4%BE%BF%E5%88%A9%E5%95%86%E5%BA%97+%E5%A4%A7%E9%87%8C%E7%9B%8A%E6%B0%91%E5%BA%97/@24.1077031,120.6841552,20z/data=!4m6!3m5!1s0x34693ce8c7a36d19:0x45db14beb28e6cfd!8m2!3d24.1075708!4d120.6842301!16s%2Fg%2F1tqyc770?utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MTIwOF8wIJvbDyoASAJQAQ%3D%3D"
+    },
+    {
+      "name": "711",
+      "map": "https://www.google.com/maps/place/412%E8%87%BA%E4%B8%AD%E5%B8%82%E5%A4%A7%E9%87%8C%E5%8D%80%E7%9B%8A%E6%B0%91%E8%B7%AF%E4%BA%8C%E6%AE%B5137%E8%99%9F7-ELEVEN+%E5%B7%A7%E8%81%96%E9%96%80%E5%B8%82/@24.1070145,120.6850295,21z/data=!4m6!3m5!1s0x34693ce8e8e9d1ef:0x15470de3a96e45f4!8m2!3d24.1069716!4d120.684967!16s%2Fg%2F1tg5rt6y?utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MTIwOF8wIJvbDyoASAJQAQ%3D%3D"
+    }
+  ]
+}
