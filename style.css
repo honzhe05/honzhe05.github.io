@@ -1,20 +1,40 @@
 body {
-  background: gray;
+  background: #FFF2E2;
+}
+
+.title {
+  text-align: center;
 }
 
 .tt {
-  padding: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: #FFDCC6;
+  padding: 8px;
   text-align: center;
-  margin: 0 auto;
+  margin: 5px auto;
+  border-radius: 30px;
 }
 
 .btn {
+  background: #ffff;
   width: 100px;
   height: 35px;
   border-radius: 20px;
   border: solid;
+  text-align: center;
+  margin: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #bababa;
+  transition: all 0.2s ease-in-out;
 }
 
 .LittleFont {
   font-size: 10px;
+}
+
+.bottom {
+  text-align: center;
 }

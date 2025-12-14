@@ -7,19 +7,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="tt">
-    <h2>What do u want to eat today?</h2>
-
-    <label><input type="radio" name="category" value="all" checked>全部</label>
-    <label><input type="radio" name="category" value="food">食物</label>
-    <label><input type="radio" name="category" value="drink">飲料</label>
-    <label><input type="radio" name="category" value="snack">點心</label>
-    <label><input type="radio" name="category" value="other">其他</label>
+  <div>
+    <h1 class="title">Finding Foods</h1>
   </div>
   <div class="tt">
+    <label>
+      <h2>What do u want to eat today?</h2>
+      <h3 class="LittleFont">Just wiggle ur finger and I'll decide for u.</h3>
+    </label><br>
+    
+    <label><input type="radio" name="category" value="all" checked>All</label>
+    <label><input type="radio" name="category" value="food">Food</label>
+    <label><input type="radio" name="category" value="drink">Drink</label>
+    <label><input type="radio" name="category" value="snack">Snack</label>
+    <label><input type="radio" name="category" value="other">Other</label>
+    
     <button id="StartBtn" class="btn">start</button>
   </div>
-  <div class="tt">
+    
+  <div class="bottom">
     <label id="total" class="LittleFont">Current total number of stores: 0</label>
   </div>
 
