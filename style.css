@@ -7,3 +7,14 @@ body {
   text-align: center;
   margin: 0 auto;
 }
+
+.btn {
+  width: 100px;
+  height: 35px;
+  border-radius: 20px;
+  border: solid;
+}
+
+.LittleFont {
+  font-size: 10px;
+}

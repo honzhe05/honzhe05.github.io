@@ -9,14 +9,17 @@
   <div class="tt">
     <h2>What do u want to eat today?</h2>
 
-    <label><input type="radio" name="category" value="all" checked="true"> 全部</label>
+    <label><input type="radio" name="category" value="all" checked> 全部</label>
     <label><input type="radio" name="category" value="food"> 食物</label>
     <label><input type="radio" name="category" value="drink"> 飲料</label>
     <label><input type="radio" name="category" value="snack"> 點心</label>
     <label><input type="radio" name="category" value="other"> 其他</label>
   </div>
   <div class="tt">
-    <button id="StartBtn">start</button>
+    <button id="StartBtn" class="btn">start</button>
+  </div>
+  <div class="tt">
+    <label id="total" class="LittleFont">Current total number of stores: 0</label>
   </div>
 
   <script src="main.js"></script>

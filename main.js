@@ -5,6 +5,13 @@ fetch("stores.json")
   .then(data => {
     stores = data;
     console.log("資料載入完成", stores);
+    
+    let TotalStores = 0;
+    for (const ca in stores) {
+      TotalStores += stores[ca].length;
+    }
+    
+    document.getElementById("total").textContent = "Current total number of stores: " + TotalStores;
   });
 
 function getSelectedCategory() {
@@ -33,6 +40,6 @@ document.getElementById("StartBtn").addEventListener("click", () => {
 
   const pick = randomPick(list);
 
-  alert(`今天抽到的是：${pick.name}（分類：${cat}）`);
+  alert(`今天抽到的是：\n   ${pick.name}  (分類: ${cat})`);
   window.open(pick.map);
 });
