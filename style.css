@@ -8,7 +8,7 @@ body {
 
 .tt {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  background: #FFDCC6;
+  background: #FFE5D5;
   padding: 8px;
   text-align: center;
   margin: 5px auto;
@@ -16,18 +16,34 @@ body {
 }
 
 .btn {
-  background: #ffff;
-  width: 100px;
+  background: #FFE5D1;
+  width: 150px;
+  height: 35px;
+  border-radius: 20px;
+  border: solid;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.btn:hover {
+  background: #FFDCC6;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn1 {
+  background: #FFE5D1;
   height: 35px;
   border-radius: 20px;
   border: solid;
   text-align: center;
   margin: 10px;
-  margin-top: 20px;
   cursor: pointer;
+  font-size: 11px;
 }
-.btn:hover {
-  background: #bababa;
+.btn1:hover {
+  background: #FFDCC6;
   transition: all 0.2s ease-in-out;
 }
 
