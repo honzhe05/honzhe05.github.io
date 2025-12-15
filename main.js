@@ -1,3 +1,4 @@
+let times = 0;
 let stores = {};
 let updateInfo = { version: 0 };
 
@@ -35,55 +36,72 @@ function randomPick(arr) {
 }
 
 const spinner = document.getElementById("spinner");
+const bottom1 = document.querySelector(".bottom1");
+const choose = document.getElementById("choose");
+
 function showSpinner() {
   spinner.style.display = "block";
-  requestAnimationFrame(() => {
-    spinner.classList.add("show");
+  spinner.style.opacity = 0;
+  spinner.style.transform = "scale(0.5)";
+
+  void spinner.offsetWidth;
+
+  spinner.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+  spinner.style.opacity = 1;
+  spinner.style.transform = "scale(1)";
+}
+
+function hideSpinner() {
+  return new Promise(resolve => {
+    // 淡出
+    spinner.style.opacity = 0;
+    spinner.style.transform = "scale(0.5)";
+
+    setTimeout(() => {
+      spinner.style.display = "none";
+      resolve();
+    }, 500);
   });
 }
-function hideSpinner() {
-  spinner.classList.remove("show");
-  
-  spinner.addEventListener("transitionend", () => {
-    spinner.style.display = "none";
-  }, { once: true });
-}
 
-document.getElementById("StartBtn").addEventListener("click", () => {
-  if (!stores || Object.keys(stores).length === 0) {
-    return alert("資料尚未載入，請稍等...");
-  }
+async function pickStore() {
+  showSpinner();
+  await new Promise(res => setTimeout(res, 800));
+  await hideSpinner();
 
   const resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = "";
 
-  showSpinner();
+  let cat = getSelectedCategory();
+  if (cat === "all") {
+    const categories = Object.keys(stores);
+    cat = randomPick(categories);
+  }
+  const list = stores[cat] ?? [];
+  if (list.length === 0) return alert("這個分類沒有店家");
+  const pick = randomPick(list);
 
-  setTimeout(() => {
-    spinner.classList.remove("show");
+  resultDiv.innerHTML = `
+    <h3>What u drew is...</h3>
+    <h4>${pick.name} (${cat})</h4>
+    <a href="${pick.map}" target="_blank">Open In Google Maps</a>
+  `;
 
-    spinner.addEventListener("transitionend", () => {
-      spinner.style.display = "none";
+  times += 1;
+  if (times >= 3) {
+    choose.textContent = "U've already struggled to decide " + times + " times. zzz";
+    bottom1.style.opacity = 0;
+    bottom1.style.display = "flex";
+    void bottom1.offsetWidth;
+    bottom1.style.transition = "opacity 1s";
+    bottom1.style.opacity = 1;
+  }
+};
 
-      let cat = getSelectedCategory();
-      if (cat === "all") {
-        const categories = Object.keys(stores);
-        cat = randomPick(categories);
-      }
-
-      const list = stores[cat] ?? [];
-      if (list.length === 0) return alert("這個分類沒有店家");
-
-      const pick = randomPick(list);
-
-      resultDiv.innerHTML = `
-        <h3>What u drew is...</h3>
-        <h4>${pick.name} (${cat})</h4>
-        <a href="${pick.map}" target="_blank">Open In Google Maps</a>
-      `;
-    }, { once: true });
-
-  }, 800);
+document.getElementById("StartBtn").addEventListener("click", () => {
+  if (!stores || Object.keys(stores).length === 0) return alert("資料尚未載入，請稍等...");
+  document.getElementById("result").innerHTML = "";
+  
+  pickStore();
 });
 
 document.getElementById("downloadBtn").addEventListener("click", () => {
