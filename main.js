@@ -3,6 +3,8 @@ let isPicking = false;
 let stores = {};
 let updateInfo = { version: 0 };
 
+let history = [];
+
 fetch("update_time.json?v=" + Date.now())
   .then(res => res.json())
   .then(data => {
@@ -90,12 +92,17 @@ async function pickStore() {
   const list = stores[cat] ?? [];
   if (list.length === 0) return alert("No shops of this type were found.");
   const pick = randomPick(list);
+  
+  history.unshift({ name: pick.name, cat: cat, map: pick.map });
+  if (history.length > 5) history.pop();
 
   resultDiv.innerHTML = `
     <h3>What u drew is...</h3>
     <h4>${pick.name} (${cat})</h4>
     <a href="${pick.map}" target="_blank">Open In Google Maps</a>
     <button id="shareBtn">Share</button>
+    <button id="historyBtn">History</button>
+    <div id="historyList" class="tt" style="display:none; text-align:left;"></div>
   `;
   
   const shareBtn = document.getElementById("shareBtn");
@@ -111,6 +118,19 @@ async function pickStore() {
   } else {
     shareBtn.style.display = "none";
   }
+  
+  const historyBtn = document.getElementById("historyBtn");
+  const historyList = document.getElementById("historyList");
+  historyBtn.addEventListener("click", () => {
+    if (historyList.style.display === "none") {
+      historyList.style.display = "block";
+      historyList.innerHTML = history.map((h, i) =>
+        `<p>${i + 1}. ${h.name} (${h.cat}) - <a href="${h.map}" target="_blank">Map</a></p>`
+      ).join("");
+    } else {
+      historyList.style.display = "none";
+    }
+  });
 
   times += 1;
   if (times >= 3) {

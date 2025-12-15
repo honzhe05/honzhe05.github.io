@@ -22,6 +22,16 @@ button:hover {
   transition: all 0.2s ease-in-out;
 }
 
+h2 {
+  font-size: clamp(23px, 3vw, 35px);
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+i {
+  font-size: clamp(8px, 3vw, 13px);
+}
+
 .title {
   text-align: center;
   font-size: 35px;
