@@ -28,27 +28,59 @@ function getSelectedCategory() {
 function randomPick(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
+
+const spinner = document.getElementById("spinner");
+function showSpinner() {
+  spinner.style.display = "block";
+  requestAnimationFrame(() => {
+    spinner.classList.add("show");
+  });
+}
+function hideSpinner() {
+  spinner.classList.remove("show");
+  
+  spinner.addEventListener("transitionend", () => {
+    spinner.style.display = "none";
+  }, { once: true });
+}
+
 document.getElementById("StartBtn").addEventListener("click", () => {
   if (!stores || Object.keys(stores).length === 0) {
     return alert("資料尚未載入，請稍等...");
   }
 
-  let cat = getSelectedCategory();
-  if (!cat) return alert("請選分類");
-  
-  if (cat === "all") {
-    const categories = Object.keys(stores);
-    // ["drink","food","snack","other"]
-    cat = randomPick(categories);
-  }
+  const resultDiv = document.getElementById("result");
+  resultDiv.innerHTML = ""; // 清空結果
 
-  const list = stores[cat] ?? [];
-  if (list.length === 0) return alert("這個分類沒有店家");
+  showSpinner(); // 顯示 spinner
 
-  const pick = randomPick(list);
+  setTimeout(() => {
+    // 先淡出 spinner
+    spinner.classList.remove("show");
 
-  alert(`今天抽到的是：\n   ${pick.name}  (分類: ${cat})`);
-  window.open(pick.map);
+    spinner.addEventListener("transitionend", () => {
+      spinner.style.display = "none"; // 完全隱藏 spinner
+
+      let cat = getSelectedCategory();
+      if (cat === "all") {
+        const categories = Object.keys(stores);
+        cat = randomPick(categories);
+      }
+
+      const list = stores[cat] ?? [];
+      if (list.length === 0) return alert("這個分類沒有店家");
+
+      const pick = randomPick(list);
+
+      // 直接顯示結果，不淡入
+      resultDiv.innerHTML = `
+        <h3>What u drew is...</h3>
+        <h4>${pick.name} (${cat})</h4>
+        <a href="${pick.map}" target="_blank">Open In Google Maps</a>
+      `;
+    }, { once: true });
+
+  }, 800); // spinner 顯示 1.5 秒
 });
 
 document.getElementById("downloadBtn").addEventListener("click", () => {
