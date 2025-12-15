@@ -103,9 +103,10 @@ async function pickStore() {
     shareBtn.addEventListener("click", () => {
       navigator.share({
         title: "️Today eat this...",
-        text: `${pick.name}`,
-        url: pick.map
-      });
+        text: `I've decided to go to ${pick.name}\n${pick.map}`
+      })
+      .then(() => alert("Shared successfully"))
+      .catch((error) => console.log("Share failed", error));
     });
   } else {
     shareBtn.style.display = "none";
