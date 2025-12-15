@@ -9,17 +9,27 @@ body {
 
 .tt {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  background: #FFE5D5;
+  background: linear-gradient(to bottom, #FFE5D5, #FFD7C1);
   padding: 8px;
   text-align: center;
   margin: 5px auto;
   border-radius: 30px;
   max-width: 380px;
+  border: solid;
 }
 
 .btn {
-  background: #FFE5D1;
-  width: 150px;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  
+  font-size: clamp(19px, 3vw, 26px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  background: linear-gradient(to bottom, #FFE5D5, #FFD7C1);
+  padding-left: 20px;
+  padding-right: 20px;
   height: 35px;
   border-radius: 20px;
   border: solid;
@@ -27,15 +37,28 @@ body {
   margin-top: 25px;
   margin-bottom: 15px;
   cursor: pointer;
-  font-size: 18px;
+  
+  transition: all 0.2s ease-in-out;
 }
 .btn:hover {
   background: #FFDCC6;
   transition: all 0.2s ease-in-out;
 }
+.btn:disabled {
+  opacity: 0.9;
+  cursor: not-allowed;
+}
 
 .btn1 {
-  background: #FFE5D5;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  
+  font-size: clamp(8px, 3vw, 18px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  background: linear-gradient(to bottom, #FFE5D5, #FFD7C1);
   height: 35px;
   max-width: 200px;
   flex: 1 1 auto;
@@ -43,7 +66,6 @@ body {
   border: solid;
   text-align: center;
   cursor: pointer;
-  font-size: 13px;
 }
 .btn1:hover {
   background: #FFDCC6;
@@ -52,6 +74,59 @@ body {
 
 .LittleFont {
   font-size: 10px;
+}
+
+form {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-left: 6px;
+  flex-wrap: wrap;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.label input[type="radio"] {
+  accent-color: #00005c;
+}
+
+.label input {
+  display: none;
+}
+
+.label span {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.label span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #2f6289;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.label input:checked + span::before {
+  background-color: #2f6289;
 }
 
 .bottom {
@@ -69,7 +144,6 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  margin-bottom: 0px;
   
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -152,14 +226,13 @@ body {
   }
 
   .btn {
-    font-size: 24px;
-    width: 200px;
     height: 43px;
     border-radius: 28px;
+    padding-left: 28px;
+    padding-right: 28px;
   }
 
   .btn1 {
-    font-size: 18px;
     max-width: 275px;
     height: 43px;
     border-radius: 25px;

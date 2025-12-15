@@ -1,4 +1,5 @@
 let times = 0;
+let isPicking = false;
 let stores = {};
 let updateInfo = { version: 0 };
 
@@ -65,9 +66,16 @@ function hideSpinner() {
 }
 
 async function pickStore() {
+  if (isPicking) return;
+  isPicking = true;
+  
   showSpinner();
+  const startBtn = document.getElementById("StartBtn");
+  startBtn.disabled = true;
   await new Promise(res => setTimeout(res, 800));
   await hideSpinner();
+  isPicking = false;
+  startBtn.disabled = false;
 
   const resultDiv = document.getElementById("result");
 
