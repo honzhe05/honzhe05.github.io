@@ -13,6 +13,7 @@ body {
   text-align: center;
   margin: 5px auto;
   border-radius: 30px;
+  max-width: 380px;
 }
 
 .btn {
@@ -35,12 +36,11 @@ body {
 .btn1 {
   background: #FFE5D5;
   height: 35px;
+  max-width: 200px;
+  flex: 1 1 auto;
   border-radius: 17px;
   border: solid;
   text-align: center;
-  margin: 5px;
-  margin-top: 20px;
-  margin-bottom: 5px;
   cursor: pointer;
   font-size: 13px;
 }
@@ -55,6 +55,11 @@ body {
 
 .bottom {
   text-align: center;
+  gap: 8px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 
 .spinner {
@@ -83,4 +88,34 @@ body {
 
 #result h4 {
   margin-left: 20px;
+}
+
+/* for laptop */
+@media (min-width: 768px) {
+  .tt {
+    max-width: 600px;
+    padding: 20px;
+  }
+
+  .tt h2 {
+    font-size: 32px;
+  }
+  
+  .LittleFont {
+    font-size: 17px;
+  }
+
+  label {
+    font-size: 20px;
+  }
+
+  .btn {
+    font-size: 24px;
+    width: 200px;
+  }
+
+  .btn1 {
+    font-size: 18px;
+    max-width: 300px;
+  }
 }
