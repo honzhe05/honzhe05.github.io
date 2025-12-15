@@ -50,3 +50,24 @@ document.getElementById("StartBtn").addEventListener("click", () => {
   alert(`今天抽到的是：\n   ${pick.name}  (分類: ${cat})`);
   window.open(pick.map);
 });
+
+document.getElementById("downloadBtn").addEventListener("click", () => {
+  fetch("stores.json")
+    .then(res => res.blob())
+    .then(blob => {
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "stores.json";
+      document.body.appendChild(a);
+      a.click();
+
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+});
+
+document.getElementById("githubBtn").addEventListener("click", () => {
+  window.open("https://github.com/honzhe05/honzhe05.github.io");
+})
