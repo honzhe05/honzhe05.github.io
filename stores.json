@@ -89,6 +89,18 @@
     {
       "name": "虎滿麵屋",
       "map": "https://maps.google.com/?q=%E8%99%8E%E6%BB%BF%E9%BA%B5%E5%B1%8B"
+    },
+    {
+      "name": "川醉湘麻辣食堂 大里店",
+      "map": "https://maps.google.com/?q=%E5%B7%9D%E9%86%89%E6%B9%98%E9%BA%BB%E8%BE%A3%E9%A3%9F%E5%A0%82%20%E5%A4%A7%E9%87%8C%E5%BA%97"
+    },
+    {
+      "name": "明哥滷味 大里店",
+      "map": "https://maps.google.com/?q=%E6%98%8E%E5%93%A5%E6%BB%B7%E5%91%B3%20%E5%A4%A7%E9%87%8C%E5%BA%97"
+    },
+    {
+      "name": "烏龍麵所 大里店",
+      "map": "https://maps.google.com/?q=%E7%83%8F%E9%BE%8D%E9%BA%B5%E6%89%80%20%E5%A4%A7%E9%87%8C%E5%BA%97"
     }
   ],
   "snack": [
@@ -129,6 +141,10 @@
     {
       "name": "全家便利商店 大里東益店",
       "map": "https://maps.google.com/?q=%E5%85%A8%E5%AE%B6%E4%BE%BF%E5%88%A9%E5%95%86%E5%BA%97%20%E5%A4%A7%E9%87%8C%E6%9D%B1%E7%9B%8A%E5%BA%97"
+    },
+    {
+      "name": "萊爾富 大里東榮店",
+      "map": "https://maps.google.com/?q=%E8%90%8A%E7%88%BE%E5%AF%8C%20%E5%A4%A7%E9%87%8C%E6%9D%B1%E6%A6%AE%E5%BA%97"
     }
   ]
 }
