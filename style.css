@@ -4,6 +4,7 @@ body {
 
 .title {
   text-align: center;
+  font-size: 30px;
 }
 
 .tt {
@@ -86,15 +87,40 @@ body {
   100% { transform: rotate(360deg); }
 }
 
+#result {
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: left;
+}
+#result h3 {
+  font-size: 20px;
+}
 #result h4 {
+  font-size: 15px;
   margin-left: 20px;
 }
 
 /* for laptop */
 @media (min-width: 768px) {
+  .title {
+    font-size: 38px;
+  }
+  
   .tt {
-    max-width: 600px;
+    max-width: 550px;
     padding: 20px;
+    border-radius: 38px;
+  }
+  
+  #result {
+    max-width: 550px;
+    padding: 20px;
+  }
+  #result h3 {
+    font-size: 28px;
+  }
+  #result h4 {
+    font-size: 23px;
   }
 
   .tt h2 {
@@ -112,10 +138,14 @@ body {
   .btn {
     font-size: 24px;
     width: 200px;
+    height: 43px;
+    border-radius: 28px;
   }
 
   .btn1 {
     font-size: 18px;
-    max-width: 300px;
+    max-width: 275px;
+    height: 43px;
+    border-radius: 25px;
   }
 }
