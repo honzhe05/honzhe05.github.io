@@ -15,29 +15,26 @@ body {
   margin: 5px auto;
   border-radius: 30px;
   max-width: 380px;
-  border: solid;
+  border: 1px solid;
 }
 
 .btn {
   -webkit-tap-highlight-color: transparent;
   outline: none;
-  
   font-size: clamp(19px, 3vw, 26px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
   background: linear-gradient(to bottom, #FFE5D5, #FFD7C1);
   padding-left: 20px;
   padding-right: 20px;
   height: 35px;
   border-radius: 20px;
-  border: solid;
+  border: 1px solid;
   text-align: center;
   margin-top: 25px;
   margin-bottom: 15px;
   cursor: pointer;
-  
   transition: all 0.2s ease-in-out;
 }
 .btn:hover {
@@ -52,20 +49,19 @@ body {
 .btn1 {
   -webkit-tap-highlight-color: transparent;
   outline: none;
-  
   font-size: clamp(8px, 3vw, 18px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  
   background: linear-gradient(to bottom, #FFE5D5, #FFD7C1);
   height: 35px;
   max-width: 200px;
   flex: 1 1 auto;
   border-radius: 17px;
-  border: solid;
+  border: 1px solid;
   text-align: center;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 .btn1:hover {
   background: #FFDCC6;
@@ -79,7 +75,6 @@ body {
 form {
   -webkit-tap-highlight-color: transparent;
   outline: none;
-  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,15 +89,12 @@ form {
   align-items: center;
   cursor: pointer;
 }
-
 .label input[type="radio"] {
   accent-color: #00005c;
 }
-
 .label input {
   display: none;
 }
-
 .label span {
   display: flex;
   align-items: center;
@@ -110,7 +102,6 @@ form {
   position: relative;
   padding-left: 20px;
 }
-
 .label span::before {
   content: "";
   position: absolute;
@@ -124,7 +115,6 @@ form {
   background-color: #fff;
   box-sizing: border-box;
 }
-
 .label input:checked + span::before {
   background-color: #2f6289;
 }
@@ -137,18 +127,15 @@ form {
   margin-top: 20px;
   margin-bottom: 0px;
 }
-
 .bottom1 {
   text-align: center;
   gap: 8px;
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  
   opacity: 0;
   transition: opacity 0.5s ease;
 }
-
 .bottom1.show {
   opacity: 1;
 }
@@ -160,18 +147,15 @@ form {
   width: 50px;
   height: 50px;
   margin: 20px auto;
-
   opacity: 0;
   transform: scale(0.5);
   transition: opacity 0.5s ease, transform 0.5s ease;
   animation: spin 1s linear infinite;
 }
-
 .spinner.show {
   opacity: 1;
   transform: scale(1);
 }
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -190,18 +174,15 @@ form {
   margin-left: 20px;
 }
 
-/* for laptop */
 @media (min-width: 768px) {
   .title {
     font-size: 38px;
   }
-  
   .tt {
     max-width: 550px;
     padding: 20px;
     border-radius: 38px;
   }
-  
   #result {
     max-width: 550px;
     padding: 20px;
@@ -212,26 +193,21 @@ form {
   #result h4 {
     font-size: 23px;
   }
-
   .tt h2 {
     font-size: 32px;
   }
-  
   .LittleFont {
     font-size: 17px;
   }
-
   label {
     font-size: 20px;
   }
-
   .btn {
     height: 43px;
     border-radius: 28px;
     padding-left: 28px;
     padding-right: 28px;
   }
-
   .btn1 {
     max-width: 275px;
     height: 43px;
