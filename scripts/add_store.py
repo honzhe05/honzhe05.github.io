@@ -1,6 +1,8 @@
 import json
+import urllib.parse
 
 FILE = "../stores.json"
+
 with open(FILE, "r", encoding="utf-8") as f:
     stores = json.load(f)
 
@@ -13,14 +15,15 @@ while True:
 
     if cat not in stores:
         print("❌ 沒有這個分類")
-        exit()
+        break
 
     name = input("請輸入店家名稱：").strip()
-    url = input("請輸入 Google Maps 網址：").strip()
+
+    map_url = "https://maps.google.com/?q=" + urllib.parse.quote(name)
 
     stores[cat].append({
         "name": name,
-        "map": url
+        "map": map_url
     })
 
     with open(FILE, "w", encoding="utf-8") as f:

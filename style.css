@@ -2,6 +2,26 @@ body {
   background: #FFF2E2;
 }
 
+button {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  background: linear-gradient(to bottom, #FFE5D5, #FFD7C1);
+  border: 1px solid;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 9px;
+}
+button:hover {
+  background: #FFDCC6;
+  transition: all 0.2s ease-in-out;
+}
+
 .title {
   text-align: center;
   font-size: 35px;
@@ -19,26 +39,13 @@ body {
 }
 
 .btn {
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
   font-size: clamp(19px, 3vw, 26px);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background: linear-gradient(to bottom, #FFE5D5, #FFD7C1);
   padding-left: 20px;
   padding-right: 20px;
   height: 35px;
   border-radius: 20px;
-  border: 1px solid;
-  text-align: center;
   margin-top: 25px;
   margin-bottom: 15px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-.btn:hover {
-  background: #FFDCC6;
   transition: all 0.2s ease-in-out;
 }
 .btn:disabled {
@@ -47,25 +54,11 @@ body {
 }
 
 .btn1 {
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
   font-size: clamp(8px, 3vw, 18px);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background: linear-gradient(to bottom, #FFE5D5, #FFD7C1);
   height: 35px;
   max-width: 200px;
   flex: 1 1 auto;
   border-radius: 17px;
-  border: 1px solid;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-.btn1:hover {
-  background: #FFDCC6;
-  transition: all 0.2s ease-in-out;
 }
 
 .LittleFont {

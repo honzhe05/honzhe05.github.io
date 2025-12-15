@@ -16,7 +16,6 @@ fetch("update_time.json?v=" + Date.now())
   .then(res => res.json())
   .then(data => {
     stores = data;
-    console.log("資料載入完成", stores);
 
     let TotalStores = 0;
     for (const ca in stores) {
@@ -26,7 +25,10 @@ fetch("update_time.json?v=" + Date.now())
     document.getElementById("total").textContent =
       "Current total number of stores: " + TotalStores;
   })
-  .catch(err => console.error(err));
+  .catch(err => {
+    alert("Error loading data. Please reload the page.");
+    console.error(err);
+  });
 
 function getSelectedCategory() {
   return document.querySelector('input[name="category"]:checked')?.value;
@@ -54,7 +56,6 @@ function showSpinner() {
 
 function hideSpinner() {
   return new Promise(resolve => {
-    // 淡出
     spinner.style.opacity = 0;
     spinner.style.transform = "scale(0.5)";
 
@@ -72,10 +73,12 @@ async function pickStore() {
   showSpinner();
   const startBtn = document.getElementById("StartBtn");
   startBtn.disabled = true;
+  startBtn.textContent = "Drawing...";
   await new Promise(res => setTimeout(res, 800));
   await hideSpinner();
   isPicking = false;
   startBtn.disabled = false;
+  startBtn.textContent = "Start Drawing";
 
   const resultDiv = document.getElementById("result");
 
@@ -85,14 +88,28 @@ async function pickStore() {
     cat = randomPick(categories);
   }
   const list = stores[cat] ?? [];
-  if (list.length === 0) return alert("這個分類沒有店家");
+  if (list.length === 0) return alert("No shops of this type were found.");
   const pick = randomPick(list);
 
   resultDiv.innerHTML = `
     <h3>What u drew is...</h3>
     <h4>${pick.name} (${cat})</h4>
     <a href="${pick.map}" target="_blank">Open In Google Maps</a>
+    <button id="shareBtn">Share</button>
   `;
+  
+  const shareBtn = document.getElementById("shareBtn");
+  if (navigator.share) {
+    shareBtn.addEventListener("click", () => {
+      navigator.share({
+        title: "️Today eat this...",
+        text: `${pick.name}`,
+        url: pick.map
+      });
+    });
+  } else {
+    shareBtn.style.display = "none";
+  }
 
   times += 1;
   if (times >= 3) {
@@ -106,7 +123,7 @@ async function pickStore() {
 };
 
 document.getElementById("StartBtn").addEventListener("click", () => {
-  if (!stores || Object.keys(stores).length === 0) return alert("資料尚未載入，請稍等...");
+  if (!stores || Object.keys(stores).length === 0) return alert("Wait a moment, the data hasn't been prepared yet.");
   document.getElementById("result").innerHTML = "";
   
   pickStore();
