@@ -33,14 +33,16 @@ body {
 }
 
 .btn1 {
-  background: #FFE5D1;
+  background: #FFE5D5;
   height: 35px;
-  border-radius: 20px;
+  border-radius: 17px;
   border: solid;
   text-align: center;
-  margin: 10px;
+  margin: 5px;
+  margin-top: 20px;
+  margin-bottom: 5px;
   cursor: pointer;
-  font-size: 11px;
+  font-size: 13px;
 }
 .btn1:hover {
   background: #FFDCC6;
