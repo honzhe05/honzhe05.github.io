@@ -113,24 +113,12 @@ i {
 form {
   -webkit-tap-highlight-color: transparent;
   outline: none;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  justify-items: center;
-  max-width: 320px;
-  row-gap: 25px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
   margin: 0 auto;
+  width: fit-content;
 }
-
-form .label:nth-child(1),
-form .label:nth-child(2) {
-  grid-column: span 3;
-}
-form .label:nth-child(3),
-form .label:nth-child(4),
-form .label:nth-child(5) {
-  grid-column: span 2;
-}
-
 
 .label {
   display: flex;
@@ -144,9 +132,10 @@ form .label:nth-child(5) {
 }
 
 .label span {
-  font-size: 18px;
+  font-size: 14px;
   position: relative;
-  padding-left: 22px;
+  padding-left: 20px;
+  white-space: normal;
 }
 
 .label span::before {
@@ -222,7 +211,7 @@ form .label:nth-child(5) {
   margin-left: 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 864px) {
   .main {
     display: flex;
     justify-content: center;
@@ -279,6 +268,9 @@ form .label:nth-child(5) {
   }
   .spinner {
     margin-top: 20px;
+  }
+  .label span {
+    font-size: 18px;
   }
 }
 
