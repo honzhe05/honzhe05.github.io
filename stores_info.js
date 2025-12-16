@@ -40,19 +40,32 @@ document.getElementById("downloadBtn").addEventListener("click", () => {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 });
-
 const toTopBtn = document.getElementById("toTopBtn");
+
+let scrollTimer = null;
+const HIDE_DELAY = 1200;
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY < 200) {
+    toTopBtn.style.opacity = 0;
+    toTopBtn.style.pointerEvents = "none";
+    return;
+  }
+
+  toTopBtn.style.opacity = 1;
+  toTopBtn.style.pointerEvents = "auto";
+
+  if (scrollTimer) clearTimeout(scrollTimer);
+
+  scrollTimer = setTimeout(() => {
+    toTopBtn.style.opacity = 0;
+    toTopBtn.style.pointerEvents = "none";
+  }, HIDE_DELAY);
+});
+
 toTopBtn.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
-});
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    toTopBtn.style.display = "block";
-  } else {
-    toTopBtn.style.display = "none";
-  }
 });
