@@ -46,6 +46,15 @@ i {
   font-size: clamp(8px, 3vw, 13px);
 }
 
+.btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.btn-row button {
+  flex: 1;
+}
+
 .title {
   text-align: center;
   font-size: 35px;
@@ -212,7 +221,7 @@ form {
     margin-top: 30px;
     margin-left: 18px;
   }
-  .right {
+  .left, .right {
     width: 550px;
   }
   .title {
@@ -258,4 +267,38 @@ form {
     height: 43px;
     border-radius: 25px;
   }
+  .spinner {
+    margin-top: 20px;
+  }
+}
+
+/* stores_info.html only */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 600px;
+  justify-content: center;
+  margin: 20px auto;
+  margin-top: 0px;
+}
+.th, .td {
+  border: 1px solid #aaa;
+  padding: 8px;
+  text-align: left;
+}
+.th {
+  background-color: #f2f2f2;
+}
+
+.to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  padding: 10px 14px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: none;
+  z-index: 999;
 }

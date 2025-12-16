@@ -17,25 +17,25 @@ if (savedDate !== today) {
 let times = parseInt(localStorage.getItem("pick_times") || "0", 10);
 let history = JSON.parse(localStorage.getItem("historyList") || "[]");
 
-fetch("update_time.json?v=" + Date.now())
+fetch("version_info.json?v=" + Date.now())
   .then(res => res.json())
   .then(data => {
     updateInfo.version = data.version;
-
+  
     document.getElementById("update-time").textContent =
       "Last update: " + data.last_update;
-
+  
     return fetch("stores.json?v=" + updateInfo.version);
   })
   .then(res => res.json())
   .then(data => {
     stores = data;
-
+  
     let TotalStores = 0;
     for (const ca in stores) {
       TotalStores += stores[ca].length;
     }
-
+  
     document.getElementById("total").textContent =
       "Current total number of stores: " + TotalStores;
   })
@@ -182,22 +182,10 @@ document.getElementById("StartBtn").addEventListener("click", () => {
   });
 });
 
-document.getElementById("downloadBtn").addEventListener("click", () => {
-  alert("Starting download stores.json")
-  
-  const blob = new Blob([JSON.stringify(stores, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "stores.json";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-});
-
-
 document.getElementById("githubBtn").addEventListener("click", () => {
   window.open("https://github.com/honzhe05/honzhe05.github.io");
 })
+
+document.getElementById("toInfoBtn").addEventListener("click", () => {
+  window.location.href = "stores_info.html";
+});
