@@ -22,6 +22,20 @@ button:hover {
   transition: all 0.2s ease-in-out;
 }
 
+.a {
+  -webkit-tap-highlight-color: transparent;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.a:visited {
+  color: inherit;
+}
+.a:hover, a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
 h2 {
   font-size: clamp(23px, 3vw, 35px);
   margin-top: 20px;

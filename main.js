@@ -183,6 +183,8 @@ document.getElementById("StartBtn").addEventListener("click", () => {
 });
 
 document.getElementById("downloadBtn").addEventListener("click", () => {
+  alert("Starting download stores.json")
+  
   const blob = new Blob([JSON.stringify(stores, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
 
