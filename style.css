@@ -48,6 +48,18 @@ i {
   border: 1px solid;
 }
 
+.his {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom, #FFE5D5, #FFD7C1);
+  padding: 8px;
+  text-align: left;
+  margin: 5px auto;
+  border-radius: 23px;
+  max-width: 380px;
+  border: 1px solid;
+  display: none;
+}
+
 .btn {
   font-size: clamp(19px, 3vw, 26px);
   padding-left: 20px;
@@ -181,10 +193,13 @@ form {
   .title {
     font-size: 38px;
   }
-  .tt {
+  .tt, .his {
     max-width: 550px;
     padding: 20px;
     border-radius: 38px;
+  }
+  .his {
+    border-radius: 30px;
   }
   #result {
     max-width: 550px;

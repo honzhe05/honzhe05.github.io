@@ -1,9 +1,21 @@
-let times = 0;
 let isPicking = false;
 let stores = {};
 let updateInfo = { version: 0 };
 
-let history = [];
+function todayStr() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+const savedDate = localStorage.getItem("pick_date");
+const today = todayStr();
+
+if (savedDate !== today) {
+  localStorage.setItem("historyList", "[]");
+  localStorage.setItem("pick_date", today);
+  localStorage.setItem("pick_times", "0");
+}
+let times = parseInt(localStorage.getItem("pick_times") || "0", 10);
+let history = JSON.parse(localStorage.getItem("historyList") || "[]");
 
 fetch("update_time.json?v=" + Date.now())
   .then(res => res.json())
@@ -94,7 +106,6 @@ async function pickStore() {
   const pick = randomPick(list);
   
   history.unshift({ name: pick.name, cat: cat, map: pick.map });
-  if (history.length > 5) history.pop();
 
   resultDiv.innerHTML = `
     <h3>What u drew is...</h3>
@@ -102,7 +113,8 @@ async function pickStore() {
     <a href="${pick.map}" target="_blank">Open In Google Maps</a>
     <button id="shareBtn">Share</button>
     <button id="historyBtn">History</button>
-    <div id="historyList" class="tt" style="display:none; text-align:left;"></div>
+    <button id="clearBtn" style="display:none;">Clear</button>
+    <div id="historyList" class="his"></div>
   `;
   
   const shareBtn = document.getElementById("shareBtn");
@@ -121,20 +133,35 @@ async function pickStore() {
   
   const historyBtn = document.getElementById("historyBtn");
   const historyList = document.getElementById("historyList");
+  const clearBtn = document.getElementById("clearBtn")
   historyBtn.addEventListener("click", () => {
-    if (historyList.style.display === "none") {
+    if (getComputedStyle(historyList).display === "none") {
       historyList.style.display = "block";
+      clearBtn.style.display = "inline-block"
       historyList.innerHTML = history.map((h, i) =>
         `<p>${i + 1}. ${h.name} (${h.cat}) - <a href="${h.map}" target="_blank">Map</a></p>`
       ).join("");
+      localStorage.setItem("historyList", JSON.stringify(history));
     } else {
       historyList.style.display = "none";
+      clearBtn.style.display = "none";
+    }
+  });
+  
+  clearBtn.addEventListener("click", () => {
+    if (clearBtn.style.display === "inline-block") {
+      history = [];
+      localStorage.setItem("historyList", "[]");
+      historyList.style.display = "none";
+      historyBtn.style.display = "none";
+      clearBtn.style.display = "none";
     }
   });
 
   times += 1;
+  localStorage.setItem("pick_times", times.toString());
   if (times >= 3) {
-    choose.textContent = "U've already struggled to decide " + times + " times. zzz";
+    choose.textContent = "Today u've already struggled to decide " + times + " times. zzz";
     bottom1.style.opacity = 0;
     bottom1.style.display = "flex";
     void bottom1.offsetWidth;
