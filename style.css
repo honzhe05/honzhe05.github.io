@@ -76,7 +76,7 @@ i {
 }
 
 .btn1 {
-  font-size: clamp(8px, 3vw, 18px);
+  font-size: clamp(8px, 3vw, 12px);
   height: 35px;
   max-width: 200px;
   flex: 1 1 auto;
@@ -194,14 +194,15 @@ form {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 20px;
+    gap: 10px;
     margin-top: 30px;
+    margin-left: 18px;
   }
   .right {
-    width: 500px;
+    width: 550px;
   }
   .title {
-    font-size: 38px;
+    font-size: 42px;
   }
   .tt, .his {
     max-width: 550px;
@@ -223,10 +224,10 @@ form {
     font-size: 23px;
   }
   .tt h2 {
-    font-size: 32px;
+    font-size: 30px;
   }
   .LittleFont {
-    font-size: 17px;
+    font-size: 13px;
   }
   label {
     font-size: 20px;
@@ -238,6 +239,7 @@ form {
     padding-right: 28px;
   }
   .btn1 {
+    font-size: 18px;
     max-width: 275px;
     height: 43px;
     border-radius: 25px;
