@@ -190,6 +190,16 @@ form {
 }
 
 @media (min-width: 768px) {
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  .right {
+    width: 500px;
+  }
   .title {
     font-size: 38px;
   }
@@ -204,6 +214,7 @@ form {
   #result {
     max-width: 550px;
     padding: 20px;
+    margin: 5px 0;q
   }
   #result h3 {
     font-size: 28px;

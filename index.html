@@ -11,56 +11,62 @@
   <div>
     <h1 class="title">— Finding Foods —</h1>
   </div>
-  <div class="tt">
-    <h2>What do u want to eat today?
-      <br>
-      <i>-Just wiggle ur finger and I'll decide for u-</i>
-    </h2><br>
+  <div class="main">
+    <div class="left">
+      <div class="tt">
+        <h2>What do u want to eat today?
+          <br>
+          <i>-Just wiggle ur finger and I'll decide for u-</i>
+        </h2><br>
+        
+        <form>
+          <label class="label">
+            <input type="radio" name="category" value="all" checked/>
+            <span>All</span>
+          </label>
+        
+          <label class="label">
+            <input type="radio" name="category" value="food"/>
+            <span>Food</span>
+          </label>
+          <label class="label">
+            <input type="radio" name="category" value="drink"/>
+            <span>Drink</span>
+          </label>
+          <label class="label">
+            <input type="radio" name="category" value="snack"/>
+            <span>Snack</span>
+          </label>
+          <label class="label">
+            <input type="radio" name="category" value="other"/>
+            <span>Other</span>
+          </label><br>
+        </form>
+        
+        <button id="StartBtn" class="btn">Start Drawing</button>
+      </div>
     
-    <form>
-      <label class="label">
-        <input type="radio" name="category" value="all" checked/>
-        <span>All</span>
-      </label>
-    
-      <label class="label">
-        <input type="radio" name="category" value="food"/>
-        <span>Food</span>
-      </label>
-      <label class="label">
-        <input type="radio" name="category" value="drink"/>
-        <span>Drink</span>
-      </label>
-      <label class="label">
-        <input type="radio" name="category" value="snack"/>
-        <span>Snack</span>
-      </label>
-      <label class="label">
-        <input type="radio" name="category" value="other"/>
-        <span>Other</span>
-      </label><br>
-    </form>
-    
-    <button id="StartBtn" class="btn">Start Drawing</button>
-  </div>
-
-  <div class="bottom">
-    <button id="downloadBtn" class="btn1">Download Shop Info (.json)</button>
-    <button id="githubBtn" class="btn1"> Go to This Github Website </button>
-  </div>
+      <div class="bottom">
+        <button id="downloadBtn" class="btn1">Download Shop Info (.json)</button>
+        <button id="githubBtn" class="btn1"> Go to This Github Website </button>
+      </div>
+      
+      <div class="bottom">
+        <label id="total" class="LittleFont">Current total number of stores: 0</label>
+        <label class="LittleFont">/</label>
+        <label id="update-time" class="LittleFont">Last update: loading...</label>
+      </div>
+      
+      <div id="bottom1" class="bottom1">
+        <label id="choose" class="LittleFont">Today u've already struggled to decide 0 time. zzz</label>
+      </div>
+    </div>
   
-  <div class="bottom">
-    <label id="total" class="LittleFont">Current total number of stores: 0</label>
-    <label class="LittleFont">/</label>
-    <label id="update-time" class="LittleFont">Last update: loading...</label>
+    <div class="right">
+      <div id="spinner" class="spinner" style="display:none;"></div>
+      <div id="result" style="margin-top:20px;"></div>
+    </div>
   </div>
-  
-  <div id="bottom1" class="bottom1">
-    <label id="choose" class="LittleFont">Today u've already struggled to decide 0 time. zzz</label>
-  </div>
-  
-  <div id="spinner" class="spinner" style="display:none;"></div>
-  <div id="result" style="margin-top:20px;"></div>
 
   <script src="main.js"></script>
 </body>
