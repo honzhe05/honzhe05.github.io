@@ -175,6 +175,11 @@ document.getElementById("StartBtn").addEventListener("click", () => {
   document.getElementById("result").innerHTML = "";
   
   pickStore();
+  
+  gtag('event', 'start_drawing_click', {
+    'event_category': 'interaction',
+    'event_label': 'Start Drawing Button'
+  });
 });
 
 document.getElementById("downloadBtn").addEventListener("click", () => {
