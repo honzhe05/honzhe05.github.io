@@ -3,6 +3,12 @@ const perPage = 10;
 let currentPage = getPageFromURL();
 let totalPages = 1;
 
+const urlParams = new URLSearchParams(window.location.search);
+if (!urlParams.has("page")) {
+  urlParams.set("page", "1");
+  history.replaceState(null, "", `${window.location.pathname}?${urlParams.toString()}${window.location.hash}`);
+}
+
 function getPageFromURL() {
   const params = new URLSearchParams(window.location.search);
   return parseInt(params.get("page")) || 1;
@@ -54,9 +60,11 @@ function renderPage() {
 
   document.getElementById("pageInfo").textContent =
     `Page ${currentPage} of ${totalPages}`;
+  document.getElementById("firstBtn").disabled = currentPage === 1;
   document.getElementById("prevBtn").disabled = currentPage === 1;
   document.getElementById("nextBtn").disabled = currentPage === totalPages;
-
+  document.getElementById("lastBtn").disabled = currentPage === totalPages;
+  
   updateURL();
 }
 
@@ -77,6 +85,11 @@ document.getElementById("nextBtn").addEventListener("click", () => {
     currentPage++;
     renderPage();
   }
+});
+
+document.getElementById("lastBtn").addEventListener("click", () => {
+  currentPage = totalPages;
+  renderPage();
 });
 
 
