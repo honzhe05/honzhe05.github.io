@@ -2,6 +2,20 @@ let isPicking = false;
 let stores = {};
 let updateInfo = { version: 0 };
 
+function applyHashCategory() {
+  const hash = location.hash.replace("#", "");
+  if (!hash) return;
+
+  const radio = document.querySelector(
+    `input[name="category"][value="${hash}"]`
+  );
+  if (radio) {
+    radio.checked = true;
+  }
+}
+
+applyHashCategory();
+
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -97,6 +111,7 @@ async function pickStore() {
   const resultDiv = document.getElementById("result");
 
   let cat = getSelectedCategory();
+  location.hash = cat
   if (cat === "all") {
     const categories = Object.keys(stores);
     cat = randomPick(categories);
