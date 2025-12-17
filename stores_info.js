@@ -1,21 +1,38 @@
 let storesData = {};
 const perPage = 14;
-let currentPage = getPageFromURL();
+let currentPage = 1;
 let totalPages = 1;
+let currentCategory = "all"
 
-const urlParams = new URLSearchParams(window.location.search);
-if (!urlParams.has("page")) {
-  urlParams.set("page", "1");
-  history.replaceState(null, "", `${window.location.pathname}?${urlParams.toString()}${window.location.hash}`);
-}
+getPageFromURL();
 
 function getPageFromURL() {
   const params = new URLSearchParams(window.location.search);
-  return parseInt(params.get("page")) || 1;
+
+  const cat = params.get("category");
+  const page = parseInt(params.get("page"), 10);
+
+  if (cat && ["all", "food", "drink", "snack", "other"].includes(cat)) {
+    currentCategory = cat;
+
+    const radio = document.querySelector(
+      `input[name="category"][value="${cat}"]`
+    );
+    if (radio) radio.checked = true;
+  } else {
+    currentCategory = "all";
+  }
+
+  if (!isNaN(page) && page >= 1) {
+    currentPage = page;
+  } else {
+    currentPage = 1;
+  }
 }
 
 function updateURL() {
   const url = new URL(window.location);
+  url.searchParams.set("category", currentCategory);
   url.searchParams.set("page", currentPage);
   history.replaceState(null, "", url);
 }
@@ -36,17 +53,23 @@ fetch("stores.json?v=" + Date.now())
   .catch(err => console.error('Error loading stores.json', err));
 
 function renderPage() {
+  let category = currentCategory;
   let list = [];
-  for (const key in storesData) {
-    storesData[key].forEach(store => {
-      list.push({ ...store, category: key });
-    });
+  
+  if (category === "all") {
+    for (const key in storesData) {
+      storesData[key].forEach(store => {
+        list.push({ ...store, category: key });
+      });
+    }
+  } else {
+    list = storesData[category];
   }
 
   totalPages = Math.ceil(list.length / perPage) || 1;
   
   document.getElementById("total").textContent =
-    "Current total number of stores: " + list.length;
+    "Total number of " + category + "-type stores: " + list.length;
 
   if (currentPage > totalPages) currentPage = totalPages;
   if (currentPage < 1) currentPage = 1;
@@ -60,8 +83,15 @@ function renderPage() {
 
   pageItems.forEach(store => {
     const tr = document.createElement("tr");
+    let cat;
+    if (category === "all") {
+      cat = store.category;
+    } else {
+      cat = category;
+    }
+    
     tr.innerHTML = `
-      <td class="td">${store.category}</td>
+      <td class="td">${cat}</td>
       <td class="td">${store.name}</td>
       <td class="td"><a href="${store.map}" target="_blank">Map</a></td>
     `;
@@ -106,7 +136,8 @@ document.getElementById("lastBtn").addEventListener("click", () => {
 document.querySelectorAll('input[name="category"]').forEach(radio => {
   radio.addEventListener("change", () => {
     currentPage = 1;
-    renderPage(radio.value);
+    currentCategory = radio.value;
+    renderPage();
   });
 });
 

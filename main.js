@@ -218,5 +218,5 @@ document.getElementById("githubBtn").addEventListener("click", () => {
 })
 
 document.getElementById("toInfoBtn").addEventListener("click", () => {
-  window.location.href = "stores_info.html?page=1";
+  window.location.href = "stores_info.html?category=all&page=1";
 });
