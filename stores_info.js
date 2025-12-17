@@ -4,7 +4,9 @@ let currentPage = 1;
 let totalPages = 1;
 let currentCategory = "all"
 
-getPageFromURL();
+document.addEventListener("DOMContentLoaded", () => {
+  getPageFromURL();
+});
 
 function getPageFromURL() {
   const params = new URLSearchParams(window.location.search);
@@ -63,7 +65,7 @@ function renderPage() {
       });
     }
   } else {
-    list = storesData[category];
+    list = storesData[category] ?? [];
   }
 
   totalPages = Math.ceil(list.length / perPage) || 1;
