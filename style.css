@@ -1,5 +1,6 @@
 body {
   background: #FFF2E2;
+  font-family: "Noto Sans", Arial, sans-serif;
 }
 
 button {
@@ -69,6 +70,7 @@ i {
   border-radius: 30px;
   max-width: 380px;
   border: 1px solid;
+  table-layout: auto;
 }
 
 .his {

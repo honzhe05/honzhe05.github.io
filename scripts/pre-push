@@ -1,0 +1,15 @@
+#!/bin/bash
+# -------------------------------
+# 自動更新 CSS 版本號
+# -------------------------------
+
+file="index.html"  # 你的 HTML 檔
+# 取得目前版本號
+version=$(grep -oP 'style\.css\?v=\K\d+' $file)
+# 新版本號 +1
+new_version=$((version + 1))
+# 用 sed 替換
+sed -i "s/style\.css?v=$version/style.css?v=$new_version/g" $file
+
+# 自動加入 git
+git add $file
