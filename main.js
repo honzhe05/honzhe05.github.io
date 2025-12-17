@@ -2,20 +2,29 @@ let isPicking = false;
 let stores = {};
 let updateInfo = { version: 0 };
 
-function applyHashCategory() {
-  const hash = location.hash.replace("#", "");
-  if (!hash) return;
+if (document.getElementById("StartBtn")) {
 
-  const radio = document.querySelector(`input[name="category"][value="${hash}"]`);
-  if (radio) radio.checked = true;
-}
+  function applyHashCategory() {
+    const hash = location.hash.replace("#", "");
+    if (!hash) return;
 
-applyHashCategory();
+    const radio = document.querySelector(`input[name="category"][value="${hash}"]`);
+    if (radio) radio.checked = true;
+  }
 
-window.addEventListener("hashchange", () => {
   applyHashCategory();
-  console.log("Hash changed:", location.hash);
-});
+
+  window.addEventListener("hashchange", () => {
+    applyHashCategory();
+    pickStore();
+  });
+
+  document.querySelectorAll('input[name="category"]').forEach(radio => {
+    radio.addEventListener("change", () => {
+      location.hash = radio.value;
+    });
+  });
+}
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
