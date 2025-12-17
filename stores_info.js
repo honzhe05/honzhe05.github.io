@@ -134,7 +134,7 @@ let scrollTimer = null;
 const HIDE_DELAY = 1200;
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY < 200) {
+  if (window.scrollY < 20) {
     toTopBtn.style.opacity = 0;
     toTopBtn.style.pointerEvents = "none";
     return;
