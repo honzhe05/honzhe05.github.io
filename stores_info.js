@@ -20,6 +20,13 @@ function updateURL() {
   history.replaceState(null, "", url);
 }
 
+fetch("version_info.json?v=" + Date.now())
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("update-time").textContent =
+      "Last update: " + data.last_update;
+  });
+
 fetch("stores.json?v=" + Date.now())
   .then(res => res.json())
   .then(data => {
@@ -37,6 +44,9 @@ function renderPage() {
   }
 
   totalPages = Math.ceil(list.length / perPage) || 1;
+  
+  document.getElementById("total").textContent =
+    "Current total number of stores: " + list.length;
 
   if (currentPage > totalPages) currentPage = totalPages;
   if (currentPage < 1) currentPage = 1;
