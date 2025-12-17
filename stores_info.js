@@ -1,29 +1,94 @@
-let storesData = null;
+let storesData = {};
+const perPage = 10;
+let currentPage = getPageFromURL();
+let totalPages = 1;
+
+function getPageFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return parseInt(params.get("page")) || 1;
+}
+
+function updateURL() {
+  const url = new URL(window.location);
+  url.searchParams.set("page", currentPage);
+  history.replaceState(null, "", url);
+}
 
 fetch("stores.json?v=" + Date.now())
   .then(res => res.json())
   .then(data => {
     storesData = data;
-
-    const tbody = document.querySelector('#storeTable tbody');
-    for (const cat in data) {
-      data[cat].forEach(store => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td class="td">${cat}</td>
-          <td class="td">${store.name}</td>
-          <td class="td">
-            <a href="${store.map}" target="_blank">Map</a>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
+    renderPage();
   })
   .catch(err => console.error('Error loading stores.json', err));
-    
+
+function renderPage() {
+  let list = [];
+  for (const key in storesData) {
+    storesData[key].forEach(store => {
+      list.push({ ...store, category: key });
+    });
+  }
+
+  totalPages = Math.ceil(list.length / perPage) || 1;
+
+  if (currentPage > totalPages) currentPage = totalPages;
+  if (currentPage < 1) currentPage = 1;
+
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+  const pageItems = list.slice(start, end);
+
+  const tbody = document.querySelector("#storeTable tbody");
+  tbody.innerHTML = "";
+
+  pageItems.forEach(store => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="td">${store.category}</td>
+      <td class="td">${store.name}</td>
+      <td class="td"><a href="${store.map}" target="_blank">Map</a></td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById("pageInfo").textContent =
+    `Page ${currentPage} of ${totalPages}`;
+  document.getElementById("prevBtn").disabled = currentPage === 1;
+  document.getElementById("nextBtn").disabled = currentPage === totalPages;
+
+  updateURL();
+}
+
+document.getElementById("firstBtn").addEventListener("click", () => {
+  currentPage = 1;
+  renderPage();
+});
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    renderPage();
+  }
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderPage();
+  }
+});
+
+
+document.querySelectorAll('input[name="category"]').forEach(radio => {
+  radio.addEventListener("change", () => {
+    currentPage = 1;
+    renderPage(radio.value);
+  });
+});
+
 document.getElementById("backBtn").addEventListener("click", () => {
-  window.location.href = "index.html";
+  window.location.href = "index.html#all";
 });
 
 document.getElementById("downloadBtn").addEventListener("click", () => {

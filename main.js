@@ -2,6 +2,10 @@ let isPicking = false;
 let stores = {};
 let updateInfo = { version: 0 };
 
+if (!window.location.hash) {
+  window.location.hash = "#all";
+}
+
 function applyHashCategory() {
   const hash = location.hash.replace("#", "");
   if (!hash) return;
@@ -214,5 +218,5 @@ document.getElementById("githubBtn").addEventListener("click", () => {
 })
 
 document.getElementById("toInfoBtn").addEventListener("click", () => {
-  window.location.href = "stores_info.html";
+  window.location.href = "stores_info.html?page=1";
 });
