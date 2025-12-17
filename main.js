@@ -6,17 +6,16 @@ function applyHashCategory() {
   const hash = location.hash.replace("#", "");
   if (!hash) return;
 
-  const radio = document.querySelector(
-    `input[name="category"][value="${hash}"]`
-  );
-  if (radio) {
-    radio.checked = true;
-  }
+  const radio = document.querySelector(`input[name="category"][value="${hash}"]`);
+  if (radio) radio.checked = true;
 }
 
-if (document.querySelector('input[name="category"]')) {
+applyHashCategory();
+
+window.addEventListener("hashchange", () => {
   applyHashCategory();
-}
+  console.log("Hash changed:", location.hash);
+});
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
