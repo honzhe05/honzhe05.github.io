@@ -1,5 +1,5 @@
 let storesData = {};
-const perPage = 12;
+const perPage = 14;
 let currentPage = getPageFromURL();
 let totalPages = 1;
 
