@@ -14,7 +14,9 @@ function applyHashCategory() {
   }
 }
 
-applyHashCategory();
+if (document.querySelector('input[name="category"]')) {
+  applyHashCategory();
+}
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -94,6 +96,12 @@ function hideSpinner() {
   });
 }
 
+document.querySelectorAll('input[name="category"]').forEach(radio => {
+  radio.addEventListener("change", () => {
+    location.hash = radio.value;
+  });
+});
+
 async function pickStore() {
   if (isPicking) return;
   isPicking = true;
@@ -111,7 +119,6 @@ async function pickStore() {
   const resultDiv = document.getElementById("result");
 
   let cat = getSelectedCategory();
-  location.hash = cat
   if (cat === "all") {
     const categories = Object.keys(stores);
     cat = randomPick(categories);
