@@ -108,30 +108,26 @@ function renderPage() {
   updateURL();
 }
 
-document.getElementById("firstBtn").addEventListener("click", () => {
+firstBtn.onclick = () => {
   currentPage = 1;
   renderPage();
-});
-
-document.getElementById("prevBtn").addEventListener("click", () => {
+};
+prevBtn.onclick = () => {
   if (currentPage > 1) {
     currentPage--;
     renderPage();
   }
-});
-
-document.getElementById("nextBtn").addEventListener("click", () => {
+};
+nextBtn.onclick = () => {
   if (currentPage < totalPages) {
     currentPage++;
     renderPage();
   }
-});
-
-document.getElementById("lastBtn").addEventListener("click", () => {
+};
+lastBtn.onclick = () => {
   currentPage = totalPages;
   renderPage();
-});
-
+};
 
 document.querySelectorAll('input[name="category"]').forEach(radio => {
   radio.addEventListener("change", () => {
