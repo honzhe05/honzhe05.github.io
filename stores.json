@@ -23,6 +23,14 @@
     {
       "name": "BLIKE 大里 Lab店",
       "map": "https://maps.google.com/?q=BLIKE%20%E5%A4%A7%E9%87%8C%20Lab%E5%BA%97"
+    },
+    {
+      "name": "新井茶 益民店",
+      "map": "https://maps.google.com/?q=%E6%96%B0%E4%BA%95%E8%8C%B6%20%E7%9B%8A%E6%B0%91%E5%BA%97"
+    },
+    {
+      "name": "日出客棧 大里益民店",
+      "map": "https://maps.google.com/?q=%E6%97%A5%E5%87%BA%E5%AE%A2%E6%A3%A7%20%E5%A4%A7%E9%87%8C%E7%9B%8A%E6%B0%91%E5%BA%97"
     }
   ],
   "food": [
@@ -101,6 +109,22 @@
     {
       "name": "烏龍麵所 大里店",
       "map": "https://maps.google.com/?q=%E7%83%8F%E9%BE%8D%E9%BA%B5%E6%89%80%20%E5%A4%A7%E9%87%8C%E5%BA%97"
+    },
+    {
+      "name": "台北民生炒飯 台中店",
+      "map": "https://maps.google.com/?q=%E5%8F%B0%E5%8C%97%E6%B0%91%E7%94%9F%E7%82%92%E9%A3%AF%20%E5%8F%B0%E4%B8%AD%E5%BA%97"
+    },
+    {
+      "name": "港款赤肉羹 大里店",
+      "map": "https://maps.google.com/?q=%E6%B8%AF%E6%AC%BE%E8%B5%A4%E8%82%89%E7%BE%B9%20%E5%A4%A7%E9%87%8C%E5%BA%97"
+    },
+    {
+      "name": "和旺鍋燒店 益民總店",
+      "map": "https://maps.google.com/?q=%E5%92%8C%E6%97%BA%E9%8D%8B%E7%87%92%E5%BA%97%20%E7%9B%8A%E6%B0%91%E7%B8%BD%E5%BA%97"
+    },
+    {
+      "name": "188炸雞店",
+      "map": "https://maps.google.com/?q=188%E7%82%B8%E9%9B%9E%E5%BA%97"
     }
   ],
   "snack": [
@@ -127,6 +151,10 @@
     {
       "name": "港心冰火菠蘿油 大里店",
       "map": "https://maps.google.com/?q=%E6%B8%AF%E5%BF%83%E5%86%B0%E7%81%AB%E8%8F%A0%E8%98%BF%E6%B2%B9%20%E5%A4%A7%E9%87%8C%E5%BA%97"
+    },
+    {
+      "name": "哩厚Liho車輪餅",
+      "map": "https://maps.google.com/?q=%E5%93%A9%E5%8E%9ALiho%E8%BB%8A%E8%BC%AA%E9%A4%85"
     }
   ],
   "other": [
