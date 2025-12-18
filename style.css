@@ -280,7 +280,7 @@ form {
 .table {
   border-collapse: collapse;
   width: 100%;
-  max-width: 600px;
+  max-width: 530px;
   justify-content: center;
   margin: 20px auto;
   margin-top: 0px;
@@ -333,4 +333,38 @@ form {
     padding: 14px 18px;
     font-size: 16px;
   }
+}
+
+.search-box {
+  display: flex;
+  height: 35px;
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+  margin-bottom: 0px;
+  padding: 6px;
+  gap: 10px;
+  justify-content: center;
+}
+
+#searchInput, #sortSelect {
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  border: 1px solid;
+}
+#sortSelect {
+  cursor: pointer;
+}
+
+.table td {
+  background-color: #FFEAE0;
+}
+
+.td.empty {
+  text-align: center;
+  color: #777;
+  padding: 20px;
+  font-style: italic;
+  background: #fff;
 }

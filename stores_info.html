@@ -7,38 +7,53 @@
   <link rel="stylesheet" href="style.css?v=16">
 </head>
 <body class="stores_info">
-  <div>
-    <a href="index.html" class="a">
-      <h1 class="title">— Finding Foods —</h1>
-    </a>
-  <div class="btn-row">
-    <button id="backBtn" class="btn1">Return To Homepage</button>
-    <button id="downloadBtn" class="btn1">Download Shops Info (.json)</button>
-  </div><br>
-  
-  <form>
-    <label class="label">
-      <input type="radio" name="category" value="all" checked/>
-      <span>All</span>
-    </label>
-        
-    <label class="label">
-      <input type="radio" name="category" value="food"/>
-      <span>Food</span>
-    </label>
-    <label class="label">
-      <input type="radio" name="category" value="drink"/>
-      <span>Drink</span>
-    </label>
-    <label class="label">
-      <input type="radio" name="category" value="snack"/>
-      <span>Snack</span>
-    </label>
-    <label class="label">
-      <input type="radio" name="category" value="other"/>
-      <span>Other</span>
-    </label>
-  </form>
+  <div class="tt" style="box-shadow:none;">
+    <div>
+      <a href="index.html" class="a">
+        <h1 class="title">— Finding Foods —</h1>
+      </a>
+    <div class="btn-row">
+      <button id="backBtn" class="btn1">Return To Homepage</button>
+      <button id="downloadBtn" class="btn1">Download Shops Info (.json)</button>
+    </div>
+
+    <form style="margin-top:16px;">
+      <label class="label">
+        <input type="radio" name="category" value="all" checked/>
+        <span>All</span>
+      </label>
+      <label class="label">
+        <input type="radio" name="category" value="food"/>
+        <span>Food</span>
+      </label>
+      <label class="label">
+        <input type="radio" name="category" value="drink"/>
+        <span>Drink</span>
+      </label>
+      <label class="label">
+        <input type="radio" name="category" value="snack"/>
+        <span>Snack</span>
+      </label>
+      <label class="label">
+        <input type="radio" name="category" value="other"/>
+        <span>Other</span>
+      </label>
+    </form>
+    <div class="search-box">
+      <select id="sortSelect">
+        <option value="default">Default</option>
+        <option value="name-asc">Name A -> Z</option>
+        <option value="name-desc">Name Z -> A</option>
+        <option value="category">Category</option>
+      </select>
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search Store Name..."
+        autocomplete="off"
+      />
+    </div>
+  </div>
   
   <table id="storeTable" class="table">
     <thead>
