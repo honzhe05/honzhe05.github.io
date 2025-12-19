@@ -3,7 +3,7 @@ body {
   font-family: "Noto Sans", Arial, sans-serif;
 }
 
-button {
+button, select {
   -webkit-tap-highlight-color: transparent;
   outline: none;
   user-select: none;
@@ -11,7 +11,9 @@ button {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  
+}
+
+button {
   background: linear-gradient(to bottom, #FFE5D5, #FFD7C1);
   border: 1px solid;
   text-align: center;
