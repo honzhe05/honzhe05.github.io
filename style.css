@@ -19,7 +19,7 @@ button {
   border-radius: 9px;
 }
 button:hover {
-  background: #FFDCC6;
+  background: linear-gradient(to top, #FFE5D5, #FFD7C1);
   transition: all 0.2s ease-in-out;
 }
 
@@ -314,16 +314,17 @@ form {
   margin-top: 10px;
   gap: 5px;
 }
-
 .pagination button {
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 20px;
 }
-
 .pagination button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+.pagination span {
+  margin-top: 3px;
 }
 
 @media (max-width: 600px) {
@@ -338,8 +339,6 @@ form {
 .search-box {
   display: flex;
   height: 35px;
-  width: 100%;
-  max-width: 400px;
   margin: 10px auto;
   margin-bottom: 0px;
   padding: 6px;
@@ -348,12 +347,10 @@ form {
 }
 
 #searchInput, #sortSelect {
-  padding: 10px;
-  font-size: 12px;
+  padding-left: 6px;
+  font-size: 14px;
   border-radius: 8px;
   border: 1px solid;
-}
-#sortSelect {
   cursor: pointer;
 }
 
