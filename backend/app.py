@@ -1,8 +1,10 @@
 from flask import Flask, jsonify
 import sqlite3
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 def get_db():
     conn = sqlite3.connect("stores.db")
