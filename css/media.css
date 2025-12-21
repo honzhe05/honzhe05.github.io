@@ -1,0 +1,62 @@
+@media (min-width: 864px) {
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 30px;
+    margin-left: 18px;
+  }
+  .left, .right {
+    width: 550px;
+  }
+  .title {
+    font-size: 42px;
+  }
+  .tt, .his {
+    max-width: 550px;
+    padding: 20px;
+    border-radius: 38px;
+  }
+  .his {
+    border-radius: 30px;
+  }
+  #result {
+    max-width: 550px;
+    padding: 20px;
+    margin: 5px 0;q
+  }
+  #result h3 {
+    font-size: 28px;
+  }
+  #result h4 {
+    font-size: 23px;
+  }
+  .tt h2 {
+    font-size: 30px;
+  }
+  .LittleFont {
+    font-size: 13px;
+  }
+  label {
+    font-size: 20px;
+  }
+  .btn {
+    height: 43px;
+    border-radius: 28px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  .btn1 {
+    font-size: 18px;
+    max-width: 275px;
+    height: 43px;
+    border-radius: 25px;
+  }
+  .spinner {
+    margin-top: 20px;
+  }
+  .label span {
+    font-size: 18px;
+  }
+}
