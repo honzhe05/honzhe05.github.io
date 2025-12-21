@@ -2,15 +2,26 @@ document.getElementById("addStoreBtn").addEventListener("click", () => {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   const name = document.getElementById("storeName").value;
-  const map = document.getElementById("storeMap").value;
+  let map = document.getElementById("storeMap").value;
   const category = document.getElementById("storeCategory").value;
 
-  fetch("/api/stores", {
+  if (!map) {
+    map = "https://www.google.com/maps/search/" + encodeURIComponent(name);
+  }
+
+  fetch("https://honzhe05-github-io-1.onrender.com/api/add_store", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({username, password, name, map, category})
   })
   .then(res => res.json())
-  .then(data => alert(data.message))
+  .then(data => {
+    alert(data.message);
+    if (data.success) {
+      const resultDiv = document.getElementById("result");
+      const storeLink = `<p>Added: <a href="${map}" target="_blank">${name}</a> (${category})</p>`;
+      resultDiv.innerHTML = storeLink;
+    }
+  })
   .catch(err => console.error(err));
 });

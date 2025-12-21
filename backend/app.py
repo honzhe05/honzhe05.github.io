@@ -41,8 +41,12 @@ def init_db():
     )
     """)
   
-    cur.execute("INSERT OR IGNORE INTO users (username, password) VALUES (?, ?)",
-                ("admin", admin_password))
+    cur.execute(
+        "INSERT OR IGNORE INTO users (username, password) VALUES (?, ?)",
+        ("admin",
+            hash_password(admin_password)
+        )
+    )
     conn.commit()
     conn.close()
     
@@ -108,7 +112,7 @@ def login():
 
     conn = get_db()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE username=? AND password=?", (username, password))
+    cur.execute("SELECT * FROM users WHERE username=? AND password=?", (username, hash_password(password)))
     user = cur.fetchone()
     conn.close()
 
