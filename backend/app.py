@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
 import sqlite3
 from flask_cors import CORS
+import json
+import os
 
 
 app = Flask(__name__)
@@ -20,6 +22,32 @@ def init_db():
     """)
     conn.commit()
     conn.close()
+    
+    
+def import_json_if_empty():
+    conn = sqlite3.connect("stores.db")
+    cur = conn.cursor()
+
+    cur.execute("SELECT COUNT(*) FROM stores")
+    count = cur.fetchone()[0]
+
+    if count > 0:
+        conn.close()
+        return
+
+    with open("stores.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    for category, stores in data.items():
+        for store in stores:
+            cur.execute(
+                "INSERT INTO stores (category, name, map) VALUES (?, ?, ?)",
+                (category, store["name"], store.get("map"))
+            )
+
+    conn.commit()
+    conn.close()
+    print("✅ stores.json imported into DB")
 
 
 def get_db():
@@ -29,6 +57,7 @@ def get_db():
 
 
 init_db()
+import_json_if_empty()
 @app.route("/api/stores")
 def get_stores():
     conn = get_db()

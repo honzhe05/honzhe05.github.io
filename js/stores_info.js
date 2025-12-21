@@ -66,7 +66,7 @@ function updateURL() {
   history.replaceState(null, "", url);
 }
 
-fetch("version_info.json?v=" + Date.now())
+fetch("/config/version_info.json?v=" + Date.now())
   .then(res => res.json())
   .then(data => {
     document.getElementById("update-time").textContent =

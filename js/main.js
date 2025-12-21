@@ -42,7 +42,7 @@ if (savedDate !== today) {
 let times = parseInt(localStorage.getItem("pick_times") || "0", 10);
 let history = JSON.parse(localStorage.getItem("historyList") || "[]");
 
-fetch("version_info.json?v=" + Date.now())
+fetch("/config/version_info.json?v=" + Date.now())
   .then(res => res.json())
   .then(data => {
     updateInfo.version = data.version;
