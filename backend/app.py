@@ -16,10 +16,6 @@ load_dotenv()
 admin_password = os.getenv("ADMIN_PASSWORD")
 
 
-init_db()
-import_json_if_empty()
-
-
 def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode("utf-8")).hexdigest()
     
@@ -87,6 +83,10 @@ def get_db():
     return conn
 
 
+init_db()
+import_json_if_empty()
+
+
 @app.route("/api/stores")
 def get_stores():
     conn = get_db()
@@ -131,7 +131,7 @@ def add_store():
 
     conn = get_db()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE username=? AND password=?", (username, password))
+    cur.execute("SELECT * FROM users WHERE username=? AND password=?", (username, hash_password(password)))
     user = cur.fetchone()
     if not user:
         conn.close()
