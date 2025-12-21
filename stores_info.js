@@ -73,7 +73,7 @@ fetch("version_info.json?v=" + Date.now())
       "Last update: " + data.last_update;
   });
 
-fetch("stores.json?v=" + Date.now())
+fetch("https://honzhe05-github-io-1.onrender.com/api/stores")
   .then(res => res.json())
   .then(data => {
     storesData = data;
