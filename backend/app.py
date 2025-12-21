@@ -12,7 +12,7 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-env_path = Path(__file__).parent / ".env
+env_path = Path(__file__).parent / ".env"
 load_dotenv(dotenv_path=env_path)
 
 admin_password = os.getenv("ADMIN_PASSWORD")
