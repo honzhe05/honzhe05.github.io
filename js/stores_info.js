@@ -95,6 +95,15 @@ function sortList(list) {
   }
 }
 
+function disableBtn() {
+  document.getElementById("pageInfo").textContent =
+    `Page ${currentPage} of ${totalPages}`;
+  document.getElementById("firstBtn").disabled = currentPage === 1;
+  document.getElementById("prevBtn").disabled = currentPage === 1;
+  document.getElementById("nextBtn").disabled = currentPage === totalPages;
+  document.getElementById("lastBtn").disabled = currentPage === totalPages;
+}
+
 function renderPage() {
   let category = currentCategory;
   let list = [];
@@ -144,6 +153,8 @@ function renderPage() {
       </td>
     `;
     tbody.appendChild(tr);
+    
+    disableBtn();
     return;
   } else {
     pageItems.forEach(store => {
@@ -163,14 +174,7 @@ function renderPage() {
       tbody.appendChild(tr);
     });
   }
-
-  document.getElementById("pageInfo").textContent =
-    `Page ${currentPage} of ${totalPages}`;
-  document.getElementById("firstBtn").disabled = currentPage === 1;
-  document.getElementById("prevBtn").disabled = currentPage === 1;
-  document.getElementById("nextBtn").disabled = currentPage === totalPages;
-  document.getElementById("lastBtn").disabled = currentPage === totalPages;
-  
+  disableBtn();
   updateURL();
 }
 
