@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from pathlib import Path
 from flask import request
 from dotenv import load_dotenv
 import hashlib
@@ -11,9 +12,12 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+env_path = Path(__file__).parent / ".env
+load_dotenv(dotenv_path=env_path)
 
-load_dotenv()
 admin_password = os.getenv("ADMIN_PASSWORD")
+if not admin_password:
+    raise ValueError("ADMIN_PASSWORD not set in .env")
 
 
 def hash_password(password: str) -> str:
