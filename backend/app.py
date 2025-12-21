@@ -1,6 +1,5 @@
 from flask import Flask, jsonify
 import sqlite3
-import os
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -15,21 +14,19 @@ def get_db():
 def get_stores():
     conn = get_db()
     cur = conn.cursor()
-
     cur.execute("SELECT category, name, map FROM stores")
     rows = cur.fetchall()
     conn.close()
 
-    data = []
+    grouped = {}
     for row in rows:
-        data.append({
-            "category": row["category"],
+        cat = row["category"]
+        grouped.setdefault(cat, []).append({
             "name": row["name"],
             "map": row["map"]
         })
 
-    return jsonify(data)
+    return jsonify(grouped)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=5000, debug=True)
