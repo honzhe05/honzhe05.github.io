@@ -35,7 +35,7 @@ function getPageFromURL() {
     currentPage = 1;
   }
   
-  if (sort && ["name-asc", "name-desc", "category"].includes(sort)) {
+  if (sort && ["name-asc", "name-desc"].includes(sort)) {
     currentSort = sort;
     document.getElementById("sortSelect").value = sort;
   } else {
