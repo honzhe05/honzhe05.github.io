@@ -53,6 +53,11 @@ h2 {
   font-size: clamp(23px, 3vw, 35px);
   margin-top: 20px;
   margin-bottom: 5px;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 i {
@@ -141,6 +146,7 @@ i {
   margin-top: 20px;
   margin-bottom: 0px;
 }
+
 .bottom1 {
   text-align: center;
   gap: 8px;
