@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 import subprocess
 
-FILE = "../version_info.json"
+FILE = "../config/version_info.json"
 
 with open(FILE, "r", encoding="utf-8") as f:
     data = json.load(f)
