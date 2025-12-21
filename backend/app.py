@@ -16,6 +16,10 @@ load_dotenv()
 admin_password = os.getenv("ADMIN_PASSWORD")
 
 
+init_db()
+import_json_if_empty()
+
+
 def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode("utf-8")).hexdigest()
     
@@ -83,8 +87,6 @@ def get_db():
     return conn
 
 
-init_db()
-import_json_if_empty()
 @app.route("/api/stores")
 def get_stores():
     conn = get_db()
