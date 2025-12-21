@@ -218,18 +218,6 @@ document.getElementById("backBtn").addEventListener("click", () => {
   window.location.href = "index.html#all";
 });
 
-document.getElementById("downloadBtn").addEventListener("click", () => {
-  alert("Starting download stores.json")
-  
-  const blob = new Blob([JSON.stringify(storesData, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "stores.json";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+document.getElementById("viewBtn").addEventListener("click", () => {
+  window.open("https://honzhe05-github-io-1.onrender.com/api/stores")
 });
-const toTopBtn = document.getElementById("toTopBtn");

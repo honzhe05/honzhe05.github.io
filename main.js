@@ -50,7 +50,7 @@ fetch("version_info.json?v=" + Date.now())
     document.getElementById("update-time").textContent =
       "Last update: " + data.last_update;
   
-    return fetch("stores.json?v=" + updateInfo.version);
+    return fetch("https://honzhe05-github-io-1.onrender.com/api/stores");
   })
   .then(res => res.json())
   .then(data => {

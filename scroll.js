@@ -19,6 +19,8 @@ window.addEventListener("scroll", () => {
   }, HIDE_DELAY);
 });
 
+const toTopBtn = document.getElementById("toTopBtn");
+
 toTopBtn.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
