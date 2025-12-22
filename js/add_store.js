@@ -21,9 +21,7 @@ document.getElementById("addStoreBtn").addEventListener("click", () => {
   .then(data => {
     alert(data.message);
     if (data.success) {
-      const resultDiv = document.getElementById("result");
-      const storeLink = `<p>Added: <a href="${map}" target="_blank">${name}</a> (${category})</p>`;
-      resultDiv.innerHTML = storeLink;
+      location.reload();
     }
   })
   .catch(err => console.error(err));
@@ -63,12 +61,13 @@ document.getElementById("removeStoreBtn").addEventListener("click", () => {
   .then(res => res.json())
   .then(data => {
     if (data.success) {
-      alert("刪除成功");
+      alert("Delete succeeded");
       location.reload();
     } else {
-      alert("刪除失敗");
+      alert("Delete failed");
     }
-  });
+  })
+  .catch(err => console.error('Delete shop error', err));
 });
 
 fetch("https://honzhe05-github-io.onrender.com/api/stores")
