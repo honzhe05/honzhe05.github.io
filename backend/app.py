@@ -68,7 +68,8 @@ def import_json_if_empty():
     cur = conn.cursor()
 
     cur.execute("SELECT COUNT(*) FROM stores")
-    count = cur.fetchone()[0]
+    row = cur.fetchone()
+    count = row[0] if row else 0
 
     if count > 0:
         conn.close()
