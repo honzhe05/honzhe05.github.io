@@ -64,20 +64,10 @@ def init_db():
     conn.close()
     
 def import_json_if_empty():
-    conn = sqlite3.connect("stores.db")
+    conn = get_db()
     cur = conn.cursor()
     
-    cur.execute("SELECT COUNT(*) AS cnt FROM stores")
-    row = cur.fetchone()
-    count = row[0] if row else 0
-
-    if count > 0:
-        conn.close()
-        return
-
-    from pathlib import Path
-    BASE_DIR = Path(__file__).parent
-    with open(BASE_DIR / "stores.json", "r", encoding="utf-8") as f:
+    with open("stores.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 
     for category, stores in data.items():
