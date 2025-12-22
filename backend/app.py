@@ -106,7 +106,7 @@ def get_stores():
 
     return app.response_class(
         json.dumps(
-            bbgrouped, ensure_ascii=False,
+            grouped, ensure_ascii=False,
             indent=2
         ), 
         mimetype='application/json'
