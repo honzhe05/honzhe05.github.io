@@ -8,7 +8,7 @@ document.getElementById("addStoreBtn").addEventListener("click", () => {
 
   let map = head + encodeURIComponent(name);
 
-  fetch("https://honzhe05-github-io-1.onrender.com/api/add_store", {
+  fetch("https://honzhe05-github-io.onrender.com/api/add_store", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({username, password, name, map, category})
