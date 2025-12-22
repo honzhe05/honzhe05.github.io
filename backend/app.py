@@ -64,10 +64,10 @@ def init_db():
     conn.close()
     
 def import_json_if_empty():
-    conn = get_db()
+    conn = sqlite3.connect("stores.db")
     cur = conn.cursor()
-
-    cur.execute("SELECT COUNT(*) FROM stores")
+    
+    cur.execute("SELECT COUNT(*) AS cnt FROM stores")
     row = cur.fetchone()
     count = row[0] if row else 0
 
