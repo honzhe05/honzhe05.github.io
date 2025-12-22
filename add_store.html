@@ -11,23 +11,41 @@
 </head>
 <body>
   <div class="tt">
-    <h2 style="text-align: center;">Add New Store</h2>
+    <a href="index.html" class="a">
+      <h2 style="text-align: center;">Add New Store</h2>
+    </a>
     <div class="search-box">
       <input id="username" placeholder="admin">
       <input id="password" placeholder="password" type="password">
     </div>
-    <div class="search-box">
-    <input id="storeName" placeholder="Store Name">
-    <input id="storeMap" placeholder="Google Maps URL">
+    <form style="margin-top:12px;">
+      <label class="label">
+        <input type="radio" name="stepType" value="add" checked/>
+        <span>Add store</span>
+      </label>
+      <label class="label">
+        <input type="radio" name="stepType" value="remove"/>
+          <span>Remove store</span>
+      </label>
+    </form>
+    
+    <div id="addStore">
+      <div class="search-box">
+        <input id="storeName" placeholder="Store Name">
+        <select id="storeCategory">
+          <option value="food">food</option>
+          <option value="drink">drink</option>
+          <option value="snack">snack</option>
+          <option value="other">other</option>
+        </select>
+        <button id="addStoreBtn">Add Store</button>
+      </div>
     </div>
-    <div class="search-box">
-    <select id="storeCategory">
-      <option value="food">food</option>
-      <option value="drink">drink</option>
-      <option value="snack">snack</option>
-      <option value="other">other</option>
-    </select>
-    <button id="addStoreBtn">Add Store</button>
+    <div id="removeStore" style="display:none;">
+      <div class="search-box">
+        <input id="storeId" placeholder="Store ID">
+        <button id="removeStoreBtn">Remove Store</button>
+      </div>
     </div>
   </div>
 

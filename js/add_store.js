@@ -1,13 +1,12 @@
+let head = "https://www.google.com/maps/search/"
+
 document.getElementById("addStoreBtn").addEventListener("click", () => {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   const name = document.getElementById("storeName").value;
-  let map = document.getElementById("storeMap").value;
   const category = document.getElementById("storeCategory").value;
 
-  if (!map) {
-    map = "https://www.google.com/maps/search/" + encodeURIComponent(name);
-  }
+  let map = head + encodeURIComponent(name);
 
   fetch("https://honzhe05-github-io-1.onrender.com/api/add_store", {
     method: "POST",
@@ -24,4 +23,19 @@ document.getElementById("addStoreBtn").addEventListener("click", () => {
     }
   })
   .catch(err => console.error(err));
+});
+
+
+const addStore = document.getElementById("addStore");
+const removeStore = document.getElementById("removeStore");
+document.querySelectorAll('input[name="stepType"]').forEach(radio => {
+  radio.addEventListener("change", () => {
+    if (radio.value === "add") {
+      addStore.style.display = "block";
+      removeStore.style.display = "none";
+    } else if (radio.value === "remove") {
+      addStore.style.display = "none";
+      removeStore.style.display = "block";
+    }
+  });
 });
