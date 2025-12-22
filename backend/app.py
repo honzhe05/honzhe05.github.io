@@ -172,7 +172,7 @@ def delete_store():
 
     # 驗證帳號
     cur.execute(
-        "SELECT 1 FROM users WHERE username=? AND password=?",
+        "SELECT 1 FROM users WHERE username=%s AND password=%s",
         (username, hash_password(password))
     )
     if not cur.fetchone():
@@ -182,8 +182,11 @@ def delete_store():
             "message": "Unauthorized"
         }), 403
 
-    # 刪除
-    cur.execute("DELETE FROM stores WHERE id=?", (store_id,))
+    # 刪除商店
+    cur.execute(
+        "DELETE FROM stores WHERE id=%s",
+        (store_id,)
+    )
     conn.commit()
 
     if cur.rowcount == 0:
