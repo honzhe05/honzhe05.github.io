@@ -5,6 +5,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import hashlib
 import os
+import json
 
 app = Flask(__name__)
 CORS(app)
