@@ -62,8 +62,34 @@ def init_db():
 
     conn.commit()
     conn.close()
+    
+def import_json_if_empty():
+    conn = get_db()
+    cur = conn.cursor()
+
+    cur.execute("SELECT COUNT(*) FROM stores")
+    count = cur.fetchone()[0]
+
+    if count > 0:
+        conn.close()
+        return
+
+    with open("stores.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    for category, stores in data.items():
+        for store in stores:
+            cur.execute(
+                "INSERT INTO stores (category, name, map) VALUES (%s, %s, %s)",
+                (category, store["name"], store.get("map"))
+            )
+
+    conn.commit()
+    conn.close()
+    print("✅ stores.json imported into PostgreSQL")
 
 init_db()
+import_json_if_empty()
 
 # ---------- routes ----------
 
