@@ -1,114 +1,89 @@
-from flask import Flask, jsonify
-from pathlib import Path
-from flask import request
-from dotenv import load_dotenv
-import hashlib
-import sqlite3
+from flask import Flask, jsonify, request
 from flask_cors import CORS
-import json
+from dotenv import load_dotenv
+import psycopg2
+from psycopg2.extras import RealDictCursor
+import hashlib
 import os
-
 
 app = Flask(__name__)
 CORS(app)
 
-env_path = Path(__file__).parent / ".env"
-load_dotenv(dotenv_path=env_path)
+# 本地開發用（Render 會忽略 .env，改用 Environment）
+load_dotenv()
 
-admin_password = os.getenv("ADMIN_PASSWORD")
-if not admin_password:
-    raise ValueError("ADMIN_PASSWORD not set in .env")
+DATABASE_URL = os.getenv("DATABASE_URL")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL not set")
+if not ADMIN_PASSWORD:
+    raise ValueError("ADMIN_PASSWORD not set")
+
+# ---------- utils ----------
 
 def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode("utf-8")).hexdigest()
-    
+
+def get_db():
+    return psycopg2.connect(
+        DATABASE_URL,
+        cursor_factory=RealDictCursor
+    )
+
+# ---------- init db ----------
 
 def init_db():
-    conn = sqlite3.connect("stores.db")
+    conn = get_db()
     cur = conn.cursor()
- 
+
     cur.execute("""
     CREATE TABLE IF NOT EXISTS stores (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        category TEXT,
-        name TEXT,
+        id SERIAL PRIMARY KEY,
+        category TEXT NOT NULL,
+        name TEXT NOT NULL,
         map TEXT
     )
     """)
- 
+
     cur.execute("""
     CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT UNIQUE,
-        password TEXT
+        id SERIAL PRIMARY KEY,
+        username TEXT UNIQUE NOT NULL,
+        password TEXT NOT NULL
     )
     """)
-  
-    cur.execute(
-        "INSERT OR IGNORE INTO users (username, password) VALUES (?, ?)",
-        ("admin",
-            hash_password(admin_password)
-        )
-    )
-    conn.commit()
-    conn.close()
-    
-    
-def import_json_if_empty():
-    conn = sqlite3.connect("stores.db")
-    cur = conn.cursor()
 
-    cur.execute("SELECT COUNT(*) FROM stores")
-    count = cur.fetchone()[0]
-
-    if count > 0:
-        conn.close()
-        return
-
-    with open("stores.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    for category, stores in data.items():
-        for store in stores:
-            cur.execute(
-                "INSERT INTO stores (category, name, map) VALUES (?, ?, ?)",
-                (category, store["name"], store.get("map"))
-            )
+    cur.execute("""
+    INSERT INTO users (username, password)
+    VALUES (%s, %s)
+    ON CONFLICT (username) DO NOTHING
+    """, ("admin", hash_password(ADMIN_PASSWORD)))
 
     conn.commit()
     conn.close()
-    print("✅ stores.json imported into DB")
-
-
-def get_db():
-    conn = sqlite3.connect("stores.db")
-    conn.row_factory = sqlite3.Row
-    return conn
-
 
 init_db()
-import_json_if_empty()
 
+# ---------- routes ----------
 
 @app.route("/api/stores")
 def get_stores():
     conn = get_db()
     cur = conn.cursor()
+
     cur.execute("SELECT category, name, map FROM stores")
     rows = cur.fetchall()
     conn.close()
 
     grouped = {}
     for row in rows:
-        cat = row["category"]
-        grouped.setdefault(cat, []).append({
+        grouped.setdefault(row["category"], []).append({
             "name": row["name"],
             "map": row["map"]
         })
 
     return jsonify(grouped)
-    
 
 @app.route("/api/login", methods=["POST"])
 def login():
@@ -118,14 +93,16 @@ def login():
 
     conn = get_db()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE username=? AND password=?", (username, hash_password(password)))
+    cur.execute(
+        "SELECT id FROM users WHERE username=%s AND password=%s",
+        (username, hash_password(password))
+    )
     user = cur.fetchone()
     conn.close()
 
     if user:
         return jsonify({"success": True})
     return jsonify({"success": False}), 401
-
 
 @app.route("/api/add_store", methods=["POST"])
 def add_store():
@@ -135,20 +112,28 @@ def add_store():
 
     conn = get_db()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE username=? AND password=?", (username, hash_password(password)))
+
+    # 驗證使用者
+    cur.execute(
+        "SELECT id FROM users WHERE username=%s AND password=%s",
+        (username, hash_password(password))
+    )
     user = cur.fetchone()
+
     if not user:
         conn.close()
         return jsonify({"success": False, "message": "Unauthorized"}), 403
 
-    category = data.get("category")
-    name = data.get("name")
-    map_url = data.get("map")
-    cur.execute("INSERT INTO stores (category, name, map) VALUES (?, ?, ?)", (category, name, map_url))
+    cur.execute(
+        "INSERT INTO stores (category, name, map) VALUES (%s, %s, %s)",
+        (data.get("category"), data.get("name"), data.get("map"))
+    )
+
     conn.commit()
     conn.close()
     return jsonify({"success": True, "message": "Store added"})
 
+# ---------- main ----------
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000)
