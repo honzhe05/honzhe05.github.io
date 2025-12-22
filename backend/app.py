@@ -159,6 +159,45 @@ def add_store():
     conn.commit()
     conn.close()
     return jsonify({"success": True, "message": "Store added"})
+    
+@app.route("/api/delete_store", methods=["POST"])
+def delete_store():
+    data = request.json
+    username = data.get("username")
+    password = data.get("password")
+    store_id = data.get("id")
+
+    conn = get_db()
+    cur = conn.cursor()
+
+    # 驗證帳號
+    cur.execute(
+        "SELECT 1 FROM users WHERE username=? AND password=?",
+        (username, hash_password(password))
+    )
+    if not cur.fetchone():
+        conn.close()
+        return jsonify({
+            "success": False,
+            "message": "Unauthorized"
+        }), 403
+
+    # 刪除
+    cur.execute("DELETE FROM stores WHERE id=?", (store_id,))
+    conn.commit()
+
+    if cur.rowcount == 0:
+        conn.close()
+        return jsonify({
+            "success": False,
+            "message": "Store not found"
+        }), 404
+
+    conn.close()
+    return jsonify({
+        "success": True,
+        "message": "Store deleted"
+    })
 
 # ---------- main ----------
 
