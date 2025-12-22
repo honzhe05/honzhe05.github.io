@@ -5,7 +5,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import hashlib
 import os
-#import json
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -91,19 +91,26 @@ init_db()
 def get_stores():
     conn = get_db()
     cur = conn.cursor()
-
-    cur.execute("SELECT category, name, map FROM stores")
+    cur.execute("SELECT id, category, name, map FROM stores")
     rows = cur.fetchall()
     conn.close()
 
     grouped = {}
     for row in rows:
-        grouped.setdefault(row["category"], []).append({
+        cat = row["category"]
+        grouped.setdefault(cat, []).append({
+            "id": row["id"],
             "name": row["name"],
             "map": row["map"]
         })
 
-    return jsonify(grouped)
+    return app.response_class(
+        json.dumps(
+            bbgrouped, ensure_ascii=False,
+            indent=2
+        ), 
+        mimetype='application/json'
+    )
 
 @app.route("/api/login", methods=["POST"])
 def login():
