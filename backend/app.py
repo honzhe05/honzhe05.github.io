@@ -74,8 +74,10 @@ def import_json_if_empty():
         conn.close()
         return
 
-    with open("stores.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
+    from pathlib import Path
+    BASE_DIR = Path(__file__).parent
+    with open(BASE_DIR / "stores.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
 
     for category, stores in data.items():
         for store in stores:

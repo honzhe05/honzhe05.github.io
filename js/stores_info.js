@@ -73,7 +73,7 @@ fetch("/config/version_info.json?v=" + Date.now())
       "Last update: " + data.last_update;
   });
 
-fetch("https://honzhe05-github-io-1.onrender.com/api/stores")
+fetch("https://honzhe05-github-io.onrender.com/api/stores")
   .then(res => res.json())
   .then(data => {
     storesData = data;
@@ -223,5 +223,5 @@ document.getElementById("backBtn").addEventListener("click", () => {
 });
 
 document.getElementById("viewBtn").addEventListener("click", () => {
-  window.open("https://honzhe05-github-io-1.onrender.com/api/stores")
+  window.open("https://honzhe05-github-io.onrender.com/api/stores")
 });
