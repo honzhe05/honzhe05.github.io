@@ -1,6 +1,8 @@
 let head = "https://www.google.com/maps/search/"
 
-document.getElementById("addStoreBtn").addEventListener("click", () => {
+document.getElementById("addStoreForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   const name = document.getElementById("storeName").value;
@@ -20,16 +22,14 @@ document.getElementById("addStoreBtn").addEventListener("click", () => {
   .then(res => res.json())
   .then(data => {
     alert(data.message);
-    if (data.success) {
-      location.reload();
-    }
+    if (data.success) location.reload();
   })
   .catch(err => console.error(err));
 });
 
 
-const addStore = document.getElementById("addStore");
-const removeStore = document.getElementById("removeStore");
+const addStore = document.getElementById("addStoreForm");
+const removeStore = document.getElementById("removeStoreForm");
 document.querySelectorAll('input[name="stepType"]').forEach(radio => {
   radio.addEventListener("change", () => {
     if (radio.value === "add") {
@@ -42,7 +42,9 @@ document.querySelectorAll('input[name="stepType"]').forEach(radio => {
   });
 });
 
-document.getElementById("removeStoreBtn").addEventListener("click", () => {
+document.getElementById("removeStoreForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+    
   const id = document.getElementById("storeId").value;
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -60,12 +62,8 @@ document.getElementById("removeStoreBtn").addEventListener("click", () => {
   })
   .then(res => res.json())
   .then(data => {
-    if (data.success) {
-      alert("Delete succeeded");
-      location.reload();
-    } else {
-      alert("Delete failed");
-    }
+    alert(data.message);
+    if (data.success) location.reload();
   })
   .catch(err => console.error('Delete shop error', err));
 });

@@ -15,8 +15,8 @@
       <h2 style="text-align: center;">Add New Store</h2>
     </a>
     <div class="search-box">
-      <input id="username" placeholder="admin">
-      <input id="password" placeholder="password" type="password">
+      <input id="username" placeholder="admin" required>
+      <input id="password" placeholder="password" type="password" required>
     </div>
     <form style="margin-top:12px;">
       <label class="label">
@@ -28,26 +28,25 @@
           <span>Remove store</span>
       </label>
     </form>
-    
-    <div id="addStore">
+    <form id="addStoreForm">
       <div class="search-box">
-        <input id="storeName" placeholder="Store Name">
-        <select id="storeCategory">
+        <input id="storeName" placeholder="Store Name" required>
+        <select id="storeCategory" required>
           <option value="food">food</option>
           <option value="drink">drink</option>
           <option value="snack">snack</option>
           <option value="other">other</option>
         </select>
-        <button id="addStoreBtn">Add Store</button>
+        <button type="submit">Add Store</button>
       </div>
-    </div>
-    <div id="removeStore" style="display:none;">
+    </form>
+    <form id="removeStoreForm" style="display:none;">
       <div class="search-box">
-        <input id="storeId" placeholder="Store ID (Not enabled now)">
-        <button id="removeStoreBtn">Remove Store</button>
+        <input id="storeId" placeholder="Store ID" required type="number">
+        <button type="submit">Remove Store</button>
       </div>
-    </div>
-
+    </form>
+    
     <table id="storeTable" class="table">
       <thead>
         <tr>
