@@ -1,0 +1,5 @@
+{
+  "name": "VocabMaster GUI",
+  "description": "A comprehensive English vocabulary management system with features for adding words with multiple parts of speech, browsing a complete dictionary, and interactive quizzes.",
+  "requestFramePermissions": []
+}
